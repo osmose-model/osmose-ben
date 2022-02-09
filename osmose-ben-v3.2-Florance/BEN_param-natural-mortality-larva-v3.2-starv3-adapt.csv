@@ -1,0 +1,20 @@
+#anchovy 6.190887;
+mortality.natural.larva.rate.sp0;5.790887
+#euphausiids 5.304677;
+mortality.natural.larva.rate.sp1;5.004677
+#shallowwaterhake 4.668959;
+mortality.natural.larva.rate.sp2;3.068959
+#deepwaterhake 4.403988;
+mortality.natural.larva.rate.sp3;3.903988
+#horsemackerel 4.547284;
+mortality.natural.larva.rate.sp4;3.847284
+#mesopelagic 4.358056;
+mortality.natural.larva.rate.sp5;4.358056
+#redeye 5.706346;
+mortality.natural.larva.rate.sp6;5.206346
+#sardine 3.119504;
+mortality.natural.larva.rate.sp7;2.719504
+#silverkob 7.874349;
+mortality.natural.larva.rate.sp8;6.674349
+#snoek 10.45594;
+mortality.natural.larva.rate.sp9;9.55594

@@ -1,0 +1,19 @@
+version utilisée pour le stage de Florence est celle issue de:
+- version Virginie
+- predation du 25 mars 2015
+- calibration avec plus de poids sur B(=20) vs C(=8)
+- output des ages 0+ pour anchois, sardine, redeye
+
+BEN_all-parameters-v3.2.csv
+BEN_param-natural-mortality-larva-v3.2-predmars2015-WonB.csv
+BEN_param-fishing-v3.2-predmars2015-WonB.csv
+BEN_param-plankton-v3.2-predmars2015-WonB.csv
+
+calibration sur les années 2000-2003 pour biomasses et captures.
+
+-> Mettre à jour cartes de distribution
+-> mettre à jour B et C pour années 2010
+
+--------------
+suite à anomalie de dynamiques qd F=0, starvation max à 3, M0 et F réajustés.
+les nouveaux fichiers sont **-NEW.csv

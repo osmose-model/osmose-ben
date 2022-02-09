@@ -1,0 +1,35 @@
+# Osmose 3 Update 2 (2015/03/01) Deprecated parameter population.initialization.method;
+# population.initialization.method;biomass
+;
+# Biomass;
+#population.initialization.biomass.sp0;0
+#population.initialization.biomass.sp1;0
+#population.initialization.biomass.sp2;0
+#population.initialization.biomass.sp3;0
+#population.initialization.biomass.sp4;0
+#population.initialization.biomass.sp5;0
+#population.initialization.biomass.sp6;0
+#population.initialization.biomass.sp7;0
+#population.initialization.biomass.sp8;0
+#population.initialization.biomass.sp9;0
+;
+# Spectrum;
+# Osmose 3 Update 2 (2015/03/01) Deprecated parameter population.initialization.spectrum.intercept;
+# population.initialization.spectrum.intercept;null
+# Osmose 3 Update 2 (2015/03/01) Deprecated parameter population.initialization.spectrum.range;
+# population.initialization.spectrum.range;null
+# Osmose 3 Update 2 (2015/03/01) Deprecated parameter population.initialization.spectrum.slope;
+# population.initialization.spectrum.slope;null
+;
+population.seeding.biomass.sp0;3888750
+population.seeding.biomass.sp1;3129213
+population.seeding.biomass.sp2;575361
+population.seeding.biomass.sp3;591907
+population.seeding.biomass.sp4;1138339
+population.seeding.biomass.sp5;1439984
+population.seeding.biomass.sp6;1286364
+population.seeding.biomass.sp7;3029155
+population.seeding.biomass.sp8;198865
+population.seeding.biomass.sp9;81054
+;
+population.seeding.year.max;30

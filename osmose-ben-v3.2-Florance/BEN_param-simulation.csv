@@ -1,0 +1,16 @@
+simulation.ncpu;1
+simulation.nplankton;4
+simulation.nschool.sp0;24
+simulation.nschool.sp1;100
+simulation.nschool.sp2;24
+simulation.nschool.sp3;24
+simulation.nschool.sp4;24
+simulation.nschool.sp5;100
+simulation.nschool.sp6;24
+simulation.nschool.sp7;24
+simulation.nschool.sp8;24
+simulation.nschool.sp9;24
+simulation.nsimulation;5
+simulation.nspecies;10
+simulation.time.ndtPerYear;24
+simulation.time.nyear;100

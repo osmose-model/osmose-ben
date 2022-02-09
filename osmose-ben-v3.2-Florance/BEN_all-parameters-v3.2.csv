@@ -1,0 +1,38 @@
+# to be updated;
+osmose.configuration.output;BEN_param-OUTPUT-v3.2.csv
+#osmose.configuration.natural-mortality-larva;BEN_param-natural-mortality-larva-v3.2-predmars2015-WonB.csv
+#osmose.configuration.natural-mortality-larva;BEN_param-natural-mortality-larva-v3.2-starv2-adapt.csv
+osmose.configuration.natural-mortality-larva;BEN_param-natural-mortality-larva-v3.2-starv3-adapt.csv
+osmose.configuration.plankton;BEN_param-plankton-v3.2-predmars2015-WonB.csv
+#osmose.configuration.fishing;BEN_param-fishing-v3.2-predmars2015-WonB.csv
+osmose.configuration.fishing;BEN_param-fishing-v3.2-starv3-update.csv
+#osmose.configuration.fishing;BEN_param-fishing-v3.2-F0.csv
+osmose.configuration.predation;BEN_param-predation-25mars2015.csv
+#osmose.configuration.predation;BEN_param-predation-20may2015.csv
+;
+# Simulation;
+osmose.configuration.simulation;BEN_param-simulation.csv
+# Species;
+osmose.configuration.species;BEN_param-species-update.csv
+#osmose.configuration.species;BEN_param-species.csv
+# Grid;
+osmose.configuration.grid;BEN_param-grid.csv
+# LTL;
+osmose.configuration.ltl;BEN_param-ltl.csv
+# Population initialization;
+osmose.configuration.inipop;BEN_param-inipop.csv
+# Movement;
+osmose.configuration.movement;BEN_param-movement-new3.csv
+# Reproduction;
+osmose.configuration.reproduction;BEN_param-reproduction.csv
+# Predation;
+;
+# Starvation;
+osmose.configuration.starvation;BEN_param-starvation-test.csv
+#osmose.configuration.starvation;BEN_param-starvation.csv
+# Natural mortality;
+osmose.configuration.natural-mortality;BEN_param-natural-mortality.csv
+#osmose.configuration.natural-mortality;BEN_param-natural-mortality-test.csv
+# Osmose 3 Update 1 (2014/06/01) Added parameter osmose.version;Osmose 3 Update 1 (2014/06/01)
+# Osmose 3 Update 2 (2015/03/01) Updated parameter osmose.version to Osmose 3 Update 2 (2015/03/01);
+osmose.version;Osmose 3 Update 2 (2015/03/01)
