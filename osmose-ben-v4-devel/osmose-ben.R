@@ -66,13 +66,8 @@ simulation.nschool.sp7 = 24
 simulation.nschool.sp8 = 24
 simulation.nschool.sp9 = 24
 
-simulation.nresource = 4
-simulation.nspecies = 10
-simulation.nfisheries = 9
-fisheries.enabled = TRUE
-fisheries.check.enabled = TRUE
 grid.java.classname = fr.ird.osmose.grid.NcGrid
-grid.netcdf.file = input/gridMask_benguela.nc
+grid.netcdf.file = input/grid-mask.nc
 grid.var.lat = latitude
 grid.var.lon = longitude
 grid.var.mask = mask
