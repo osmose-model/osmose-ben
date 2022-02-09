@@ -1,13 +1,20 @@
 library(osmose)
 library(osmose.extras)
 library(stringr)
+library(ncdf4)
+library(nctools)
+library(kali)
 
-output = file.path("osmose-ben-v4-devel", "osmose-ben.R")
+base = "osmose-ben-v4-devel"
+cfg = "osmose-ben-v3.2-Florance/BEN_all-parameters-v3.2.csv"
+
+
+output = file.path(base, "osmose-ben.R")
 
 .readConfiguration = osmose.extras:::.readConfiguration
 .getPar = osmose.extras:::.getPar
 
-ben = .readConfiguration("osmose-ben-v3.2-Florance/BEN_all-parameters-v3.2.csv")
+ben = .readConfiguration(cfg)
 bio = .getPar(ben, par="species.")
 
 .getPar(bio, sp=0)
@@ -59,12 +66,38 @@ sim1 = .getPar(sim, "nschool")
 write_osmose(as.matrix(sim0), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 write_osmose(as.matrix(sim1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+# convert grid to ncdf
+
+dir.create(file.path(base, "input"), recursive = TRUE, showWarnings = FALSE)
+
+grid_file = .getPar(ben, "grid.mask.file")
+grid = as.matrix(read.csv(file.path(attr(grid_file, "path"), grid_file), sep=";", dec=".", header = FALSE)) # non ISO format!
+grid = rotate(grid)
+grid[grid==-99] = NA
+grid = 0 + !grid
+
+grid_file = file.path("input", gsub(grid_file, pattern=".csv$", replacement = ".nc"))
+
+theGrid = osmose_grid(ben)
+
+vars = list(mask = grid, area=theGrid$area,
+            latitude=theGrid$LAT, longitude=theGrid$LON)
+dims = list(x=seq_len(nrow(grid)), y=seq_len(ncol(grid)))
+
+write_ncdf(vars, filename = file.path(base, grid_file), dim = dims)
+
+out1 = list()
 out1[["grid.java.classname"]] = "fr.ird.osmose.grid.NcGrid"
-out1[["grid.netcdf.file"]]    = "input/gridMask_benguela.nc"
+out1[["grid.netcdf.file"]]    = grid_file
 out1[["grid.var.lat"]]        = "latitude"
 out1[["grid.var.lon"]]        = "longitude"
 out1[["grid.var.mask"]]       = "mask"
 
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+
+
+
+
 
 
