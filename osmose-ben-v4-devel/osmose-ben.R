@@ -594,3 +594,101 @@ movement.nsteps.year.map26 = 24
 movement.initialAge.map26 = 3
 movement.lastAge.map26 = 11
 movement.file.map26 = input/maps/snoek.nc
+
+# Fisheries configuration -------------------------------------------------
+
+# Output configuration ----------------------------------------------------
+
+output.start.year = 0
+output.restart.enabled = FALSE
+output.file.prefix  = ben
+output.step0.include = FALSE
+output.recordfrequency.ndt = 2
+output.cutoff.enabled = FALSE
+output.fishery.enabled = TRUE
+
+yield.biomass.enabled = TRUE
+yield.biomass.bySize.enabled = FALSE
+yield.biomass.byAge.enabled = FALSE
+yield.abundance.enabled = FALSE
+yield.abundance.bySize.enabled = FALSE
+yield.abundance.byAge.enabled = FALSE
+
+yield.biomass.netcdf.enabled = FALSE
+yield.biomass.bySize.netcdf.enabled = FALSE
+yield.biomass.byage.netcdf.enabled = FALSE
+yield.abundance.netcdf.enabled = FALSE
+yield.abundance.bySize.netcdf.enabled = FALSE
+yield.abundance.byage.netcdf.enabled = FALSE
+
+biomass.enabled = TRUE
+biomass.bysize.enabled = FALSE
+biomass.byage.enabled = FALSE
+biomass.bytl.enabled = FALSE
+
+biomass.netcdf.enabled = FALSE
+biomass.bysize.netcdf.enabled = FALSE
+biomass.byage.netcdf.enabled = FALSE
+biomass.bytl.netcdf.enabled = FALSE
+
+abundance.enabled = FALSE
+abundance.age1.enabled = FALSE
+abundance.bysize.enabled = FALSE
+abundance.byage.enabled = FALSE
+abundance.bytl.enabled = FALSE
+
+abundance.netcdf.enabled = FALSE
+abundance.bysize.netcdf.enabled = FALSE
+abundance.byage.netcdf.enabled = FALSE
+
+meanSize.byAge.netcdf.enabled = FALSE
+
+diet.pressure.netcdf.enabled = FALSE
+diet.composition.netcdf.enabled = FALSE
+diet.composition.byage.netcdf.enabled = FALSE
+diet.composition.bysize.netcdf.enabled = FALSE
+
+spatial.enabled = FALSE
+spatial.ltl.enabled = FALSE
+spatialabundance.enabled = FALSE
+spatialbiomass.enabled = FALSE
+spatialsize.enabled = FALSE
+spatialtl.enabled = FALSE
+spatialsizespecies.enabled = FALSE
+spatialagespecies.enabled = FALSE
+spatial.yield.biomass.enabled = FALSE
+spatial.yield.abundance.enabled = FALSE
+
+mortality.enabled = FALSE
+mortality.perSpecies.byage.enabled = FALSE
+mortality.perSpecies.bysize.enabled = FALSE
+mortality.additional.bySize.enabled = FALSE
+mortality.additional.byAge.enabled = FALSE
+mortality.additionalN.bySize.enabled = FALSE
+mortality.additionalN.byAge.enabled = FALSE
+mortality.perSpecies.byage.netcdf.enabled = FALSE
+
+size.enabled = FALSE
+size.catch.enabled = FALSE
+tl.enabled = FALSE
+tl.catch.enabled = FALSE
+meanTL.bySize.enabled = FALSE
+meanTL.byAge.enabled = FALSE
+weight.enabled = FALSE
+meanSize.byAge.enabled = FALSE
+
+diet.composition.enabled = FALSE
+diet.composition.byage.enabled = FALSE
+diet.composition.bysize.enabled = FALSE
+diet.pressure.enabled = FALSE
+diet.pressure.byage.enabled = FALSE
+diet.pressure.bysize.enabled = FALSE
+diet.success.enabled = FALSE
+
+spatialenet.enabled = FALSE
+spatialenetlarvae.enabled = FALSE
+spatialenetjuv.enabled = FALSE
+spatialdg.enabled = FALSE
+spatialegg.enabled = FALSE
+
+# Advanced parameters -----------------------------------------------------
