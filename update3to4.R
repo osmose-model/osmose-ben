@@ -409,4 +409,27 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 
 cat("\n# Advanced parameters -----------------------------------------------------\n", file=output, append = TRUE)
 
+out = list()
+out[["osmose.version"]] = "4.3.2"
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+cat("\n# Simulation restart parameters", file=output, append = TRUE)
+out = list()
+out[["simulation.restart.recordfrequency.ndt"]] = 24
+out[["population.initialization.file"]] = input/initial_conditions/humboldt-n_1992.nc
+out[["population.seeding.year.max"]] = .getPar(ben, "population.seeding.year.max")
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+out = list()
+out[["ltl.java.classname"]] = "fr.ird.osmose.ltl.LTLFastForcing"
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+cat("\n# EV-OSMOSE activation", file=output, append = TRUE)
+out = list()
+out[["simulation.bioen.enabled"]] = FALSE
+out[["simulation.genetic.enabled"]] = FALSE
+out[["simulation.incoming.flux.enabled"]] = TRUE
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+
 
