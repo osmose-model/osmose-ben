@@ -405,3 +405,192 @@ movement.randomwalk.range.sp6 = 1
 movement.randomwalk.range.sp7 = 1
 movement.randomwalk.range.sp8 = 1
 movement.randomwalk.range.sp9 = 1
+
+movement.species.map0 = anchovy
+movement.variable.map0 = stage0
+movement.nsteps.year.map0 = 24
+movement.initialAge.map0 = 0
+movement.lastAge.map0 = 1
+movement.file.map0 = input/maps/anchovy.nc
+
+movement.species.map1 = anchovy
+movement.variable.map1 = stage1
+movement.nsteps.year.map1 = 24
+movement.initialAge.map1 = 1
+movement.lastAge.map1 = 2
+movement.file.map1 = input/maps/anchovy.nc
+
+movement.species.map2 = anchovy
+movement.variable.map2 = stage2
+movement.nsteps.year.map2 = 24
+movement.initialAge.map2 = 2
+movement.lastAge.map2 = 6
+movement.file.map2 = input/maps/anchovy.nc
+
+movement.species.map3 = euphausiids
+movement.variable.map3 = stage0
+movement.nsteps.year.map3 = 24
+movement.initialAge.map3 = 0
+movement.lastAge.map3 = 1
+movement.file.map3 = input/maps/euphausiids.nc
+
+movement.species.map4 = shallowwaterhake
+movement.variable.map4 = stage0
+movement.nsteps.year.map4 = 24
+movement.initialAge.map4 = 0
+movement.lastAge.map4 = 1
+movement.file.map4 = input/maps/shallowwaterhake.nc
+
+movement.species.map5 = shallowwaterhake
+movement.variable.map5 = stage1
+movement.nsteps.year.map5 = 24
+movement.initialAge.map5 = 1
+movement.lastAge.map5 = 3
+movement.file.map5 = input/maps/shallowwaterhake.nc
+
+movement.species.map6 = shallowwaterhake
+movement.variable.map6 = stage2
+movement.nsteps.year.map6 = 24
+movement.initialAge.map6 = 3
+movement.lastAge.map6 = 6
+movement.file.map6 = input/maps/shallowwaterhake.nc
+
+movement.species.map7 = shallowwaterhake
+movement.variable.map7 = stage3
+movement.nsteps.year.map7 = 24
+movement.initialAge.map7 = 6
+movement.lastAge.map7 = 16
+movement.file.map7 = input/maps/shallowwaterhake.nc
+
+movement.species.map8 = deepwaterhake
+movement.variable.map8 = stage0
+movement.nsteps.year.map8 = 24
+movement.initialAge.map8 = 0
+movement.lastAge.map8 = 2
+movement.file.map8 = input/maps/deepwaterhake.nc
+
+movement.species.map9 = deepwaterhake
+movement.variable.map9 = stage1
+movement.nsteps.year.map9 = 24
+movement.initialAge.map9 = 2
+movement.lastAge.map9 = 16
+movement.file.map9 = input/maps/deepwaterhake.nc
+
+movement.species.map10 = horsemackerel
+movement.variable.map10 = stage0
+movement.nsteps.year.map10 = 24
+movement.initialAge.map10 = 0
+movement.lastAge.map10 = 1
+movement.file.map10 = input/maps/horsemackerel.nc
+
+movement.species.map11 = horsemackerel
+movement.variable.map11 = stage1
+movement.nsteps.year.map11 = 24
+movement.initialAge.map11 = 1
+movement.lastAge.map11 = 2
+movement.file.map11 = input/maps/horsemackerel.nc
+
+movement.species.map12 = horsemackerel
+movement.variable.map12 = stage2
+movement.nsteps.year.map12 = 24
+movement.initialAge.map12 = 2
+movement.lastAge.map12 = 3
+movement.file.map12 = input/maps/horsemackerel.nc
+
+movement.species.map13 = horsemackerel
+movement.variable.map13 = stage3
+movement.nsteps.year.map13 = 24
+movement.initialAge.map13 = 3
+movement.lastAge.map13 = 4
+movement.file.map13 = input/maps/horsemackerel.nc
+
+movement.species.map14 = horsemackerel
+movement.variable.map14 = stage4
+movement.nsteps.year.map14 = 24
+movement.initialAge.map14 = 4
+movement.lastAge.map14 = 9
+movement.file.map14 = input/maps/horsemackerel.nc
+
+movement.species.map15 = mesopelagic
+movement.variable.map15 = stage0
+movement.nsteps.year.map15 = 24
+movement.initialAge.map15 = 0
+movement.lastAge.map15 = 1
+movement.file.map15 = input/maps/mesopelagic.nc
+
+movement.species.map16 = mesopelagic
+movement.variable.map16 = stage1
+movement.nsteps.year.map16 = 24
+movement.initialAge.map16 = 1
+movement.lastAge.map16 = 3
+movement.file.map16 = input/maps/mesopelagic.nc
+
+movement.species.map17 = redeye
+movement.variable.map17 = stage0
+movement.nsteps.year.map17 = 24
+movement.initialAge.map17 = 0
+movement.lastAge.map17 = 1
+movement.file.map17 = input/maps/redeye.nc
+
+movement.species.map18 = redeye
+movement.variable.map18 = stage1
+movement.nsteps.year.map18 = 24
+movement.initialAge.map18 = 1
+movement.lastAge.map18 = 3
+movement.file.map18 = input/maps/redeye.nc
+
+movement.species.map19 = redeye
+movement.variable.map19 = stage2
+movement.nsteps.year.map19 = 24
+movement.initialAge.map19 = 3
+movement.lastAge.map19 = 7
+movement.file.map19 = input/maps/redeye.nc
+
+movement.species.map20 = sardine
+movement.variable.map20 = stage0
+movement.nsteps.year.map20 = 24
+movement.initialAge.map20 = 0
+movement.lastAge.map20 = 1
+movement.file.map20 = input/maps/sardine.nc
+
+movement.species.map21 = sardine
+movement.variable.map21 = stage1
+movement.nsteps.year.map21 = 24
+movement.initialAge.map21 = 1
+movement.lastAge.map21 = 3
+movement.file.map21 = input/maps/sardine.nc
+
+movement.species.map22 = sardine
+movement.variable.map22 = stage2
+movement.nsteps.year.map22 = 24
+movement.initialAge.map22 = 3
+movement.lastAge.map22 = 11
+movement.file.map22 = input/maps/sardine.nc
+
+movement.species.map23 = silverkob
+movement.variable.map23 = stage0
+movement.nsteps.year.map23 = 24
+movement.initialAge.map23 = 0
+movement.lastAge.map23 = 26
+movement.file.map23 = input/maps/silverkob.nc
+
+movement.species.map24 = snoek
+movement.variable.map24 = stage0
+movement.nsteps.year.map24 = 24
+movement.initialAge.map24 = 0
+movement.lastAge.map24 = 1
+movement.file.map24 = input/maps/snoek.nc
+
+movement.species.map25 = snoek
+movement.variable.map25 = stage1
+movement.nsteps.year.map25 = 24
+movement.initialAge.map25 = 1
+movement.lastAge.map25 = 3
+movement.file.map25 = input/maps/snoek.nc
+
+movement.species.map26 = snoek
+movement.variable.map26 = stage2
+movement.nsteps.year.map26 = 24
+movement.initialAge.map26 = 3
+movement.lastAge.map26 = 11
+movement.file.map26 = input/maps/snoek.nc
