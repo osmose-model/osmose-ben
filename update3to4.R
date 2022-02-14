@@ -21,8 +21,6 @@ output = file.path(base, "osmose-ben.R")
 ben = .readConfiguration(cfg)
 bio = .getPar(ben, par="species.")
 
-.getPar(bio, sp=0)
-
 cat("# OSMOSE-BEN MAIN CONFIGURATION FILE\n", file=output)
 cat("# Benguela Upwelling Ecosystem - South Africa\n", file=output, append = TRUE)
 cat("# OSMOSE version 4.3.2\n\n", file=output, append = TRUE)
@@ -264,15 +262,20 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 
 cat("\n# Movement configuration --------------------------------------------------\n", file=output, append = TRUE)
 
+dir.create(file.path(base, "input", "maps"), recursive = TRUE)
+
 pars = c("movement.distribution.method", "movement.randomwalk.range")
 
 for(ipar in pars) {
   write_osmose(as.matrix(.getPar(ben, ipar)), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
 
-### ADD MAPS CONFIGURATION
+out1 = update_maps(input=cfg, output=file.path(base, "input/maps"), conf=output, sep = ";")
 
-#####
+for(i in seq_along(out1)) {
+  write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+}
+
 
 cat("\n# Fisheries configuration -------------------------------------------------\n", file=output, append = TRUE)
 
@@ -286,3 +289,5 @@ cat("\n# Output configuration --------------------------------------------------
 # copy my own (create list, all FALSE)
 
 cat("\n# Advanced parameters -----------------------------------------------------\n", file=output, append = TRUE)
+
+
