@@ -121,7 +121,8 @@ plkfiles = as.list(plkfiles)
 
 write_osmose(as.matrix(plkfiles), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
-out1 = list(species.biomass.nsteps.year=.getPar(ben, "ltl.nstep"))
+out1 = rep(.getPar(ben, "ltl.nstep"), length(plk))
+names(out1) = gsub(names(plknames), pattern="species.name", replacement="species.biomass.nsteps.year")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out1 = .getPar(ben, "plankton.accessibility2fish")
@@ -141,12 +142,6 @@ cat("\n# Resource Trophic Level", file=output, append = TRUE)
 
 out1 = .getPar(ben, "plankton.tl")
 names(out1) = gsub(names(plknames), pattern="name", replacement="TL")
-write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
-
-cat("\n# Resource Multiplier", file=output, append = TRUE)
-
-out1 = rep(1, nplk)
-names(out1) = gsub(names(plknames), pattern="name", replacement="multiplier")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 cat("\n# Species configuration ---------------------------------------------------\n", file=output, append = TRUE)
@@ -240,6 +235,9 @@ if(exists("plk_rename")) {
 
 write.csv(acc, file=file.path(base, "input", basename(acc_file)), quote = FALSE, row.names = FALSE)
 
+out1 = list()
+out1[["predation.accessibility.file"]] = file.path("input", basename(acc_file))
+
 out1 = .getPar(ben, "predation.accessibility.stage")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
@@ -319,7 +317,7 @@ form = form[, fsh>0]
 access = form
 discards = 0*form
 
-write_osmose(form, file=file.path(base, "input","fisheries", "accessibility.csv"))
+write_osmose(form, file=file.path(base, "input","fisheries", "catchability.csv"))
 write_osmose(0*form, file=file.path(base, "input","fisheries", "discards.csv"))
 
 out1 = list()

@@ -79,7 +79,10 @@ species.file.sp11 = input/roms_climatological-lphy_benguela_15days_2000_2009.nc
 species.file.sp12 = input/roms_climatological-szoo_benguela_15days_2000_2009.nc
 species.file.sp13 = input/roms_climatological-lzoo_benguela_15days_2000_2009.nc
 
-species.biomass.nsteps.year = 24
+species.biomass.nsteps.year.sp10 = 24
+species.biomass.nsteps.year.sp11 = 24
+species.biomass.nsteps.year.sp12 = 24
+species.biomass.nsteps.year.sp13 = 24
 
 species.accessibility2fish.sp10 = 0.026894718
 species.accessibility2fish.sp11 = 0.002977831
@@ -101,12 +104,6 @@ species.TL.sp10 = 1
 species.TL.sp11 = 1
 species.TL.sp12 = 2
 species.TL.sp13 = 2.5
-
-# Resource Multiplier
-species.multiplier.sp10 = 1
-species.multiplier.sp11 = 1
-species.multiplier.sp12 = 1
-species.multiplier.sp13 = 1
 
 # Species configuration ---------------------------------------------------
 
