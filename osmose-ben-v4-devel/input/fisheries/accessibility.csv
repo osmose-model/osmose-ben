@@ -1,0 +1,11 @@
+,fishery.anchovy,fishery.shallowwaterhake,fishery.deepwaterhake,fishery.horsemackerel,fishery.mesopelagic,fishery.redeye,fishery.sardine,fishery.silverkob,fishery.snoek
+anchovy,1,0,0,0,0,0,0,0,0
+euphausiids,0,0,0,0,0,0,0,0,0
+shallowwaterhake,0,1,0,0,0,0,0,0,0
+deepwaterhake,0,0,1,0,0,0,0,0,0
+horsemackerel,0,0,0,1,0,0,0,0,0
+mesopelagic,0,0,0,0,1,0,0,0,0
+redeye,0,0,0,0,0,1,0,0,0
+sardine,0,0,0,0,0,0,1,0,0
+silverkob,0,0,0,0,0,0,0,1,0
+snoek,0,0,0,0,0,0,0,0,1
