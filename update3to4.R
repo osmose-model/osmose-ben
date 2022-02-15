@@ -6,8 +6,8 @@ library(nctools)
 library(kali)
 
 # manual inputs
-base    = "osmose-ben-v4-devel"
-cfg     = "osmose-ben-v3.2-Florance/BEN_all-parameters-v3.2.csv"
+base    = "osmose-ben_v4_devel"
+cfg     = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
 
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
@@ -488,7 +488,7 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 cat("\n# Advanced parameters -----------------------------------------------------\n", file=output, append = TRUE)
 
 out = list()
-out[["osmose.version"]] = "4.3.2"
+out[["osmose.version"]] = "4.3.3"
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 cat("\n# Simulation restart parameters", file=output, append = TRUE)

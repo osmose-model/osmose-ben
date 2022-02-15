@@ -840,7 +840,7 @@ spatialegg.enabled = FALSE
 
 # Advanced parameters -----------------------------------------------------
 
-osmose.version = 4.3.2
+osmose.version = 4.3.3
 
 # Simulation restart parameters
 simulation.restart.recordfrequency.ndt = 24
