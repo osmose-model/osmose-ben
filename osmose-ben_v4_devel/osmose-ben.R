@@ -51,7 +51,7 @@ fisheries.name.fsh8 = fishery.silverkob
 fisheries.name.fsh9 = fishery.snoek
 
 simulation.ncpu = 1
-simulation.nsimulation = 5
+simulation.nsimulation = 1
 simulation.time.ndtperyear = 24
 simulation.time.nyear = 100
 
@@ -304,16 +304,7 @@ population.seeding.year = 30
 # Predation configuration -------------------------------------------------
 
 predation.accessibility.stage.structure = age
-predation.accessibility.stage.threshold.sp0 = NULL
-predation.accessibility.stage.threshold.sp1 = NULL
-predation.accessibility.stage.threshold.sp2 = 1
-predation.accessibility.stage.threshold.sp3 = 1
-predation.accessibility.stage.threshold.sp4 = NULL
-predation.accessibility.stage.threshold.sp5 = NULL
-predation.accessibility.stage.threshold.sp6 = NULL
-predation.accessibility.stage.threshold.sp7 = NULL
-predation.accessibility.stage.threshold.sp8 = NULL
-predation.accessibility.stage.threshold.sp9 = NULL
+predation.accessibility.file = input/predation-accessibility-25mars2015.csv
 
 predation.efficiency.critical.sp0 = 0.57
 predation.efficiency.critical.sp1 = 0.57
@@ -600,8 +591,8 @@ fisheries.discards.file = input/fisheries/discards.csv
 # Fishery 0 (anchovy)
 fisheries.rate.base.log.enabled.fsh0 = FALSE
 fisheries.rate.base.fsh0 = 0.1419102
-fisheries.season.number.fsh0 = 1
-fisheries.season.start.fsh0 = 0
+fisheries.period.number.fsh0 = 1
+fisheries.period.start.fsh0 = 0
 fisheries.rate.byperiod.fsh0 = 1
 fisheries.seasonality.file.fsh0 = input/fisheries/fishing-seasonality-anchovy.csv
 fisheries.selectivity.type.fsh0 = 0
@@ -616,8 +607,8 @@ fisheries.movement.file.map0 = input/fisheries/mapFleets.nc
 # Fishery 2 (shallowwaterhake)
 fisheries.rate.base.log.enabled.fsh2 = FALSE
 fisheries.rate.base.fsh2 = 0.3339702
-fisheries.season.number.fsh2 = 1
-fisheries.season.start.fsh2 = 0
+fisheries.period.number.fsh2 = 1
+fisheries.period.start.fsh2 = 0
 fisheries.rate.byperiod.fsh2 = 1
 fisheries.seasonality.file.fsh2 = input/fisheries/fishing-seasonality-shallow-water-hake.csv
 fisheries.selectivity.type.fsh2 = 0
@@ -632,8 +623,8 @@ fisheries.movement.file.map2 = input/fisheries/mapFleets.nc
 # Fishery 3 (deepwaterhake)
 fisheries.rate.base.log.enabled.fsh3 = FALSE
 fisheries.rate.base.fsh3 = 0.3566318
-fisheries.season.number.fsh3 = 1
-fisheries.season.start.fsh3 = 0
+fisheries.period.number.fsh3 = 1
+fisheries.period.start.fsh3 = 0
 fisheries.rate.byperiod.fsh3 = 1
 fisheries.seasonality.file.fsh3 = input/fisheries/fishing-seasonality-deep-water-hake.csv
 fisheries.selectivity.type.fsh3 = 0
@@ -648,8 +639,8 @@ fisheries.movement.file.map3 = input/fisheries/mapFleets.nc
 # Fishery 4 (horsemackerel)
 fisheries.rate.base.log.enabled.fsh4 = FALSE
 fisheries.rate.base.fsh4 = 0.05028479
-fisheries.season.number.fsh4 = 1
-fisheries.season.start.fsh4 = 0
+fisheries.period.number.fsh4 = 1
+fisheries.period.start.fsh4 = 0
 fisheries.rate.byperiod.fsh4 = 1
 fisheries.seasonality.file.fsh4 = input/fisheries/fishing-seasonality-horse-mackerel.csv
 fisheries.selectivity.type.fsh4 = 0
@@ -664,8 +655,8 @@ fisheries.movement.file.map4 = input/fisheries/mapFleets.nc
 # Fishery 5 (mesopelagic)
 fisheries.rate.base.log.enabled.fsh5 = FALSE
 fisheries.rate.base.fsh5 = 0.000923734
-fisheries.season.number.fsh5 = 1
-fisheries.season.start.fsh5 = 0
+fisheries.period.number.fsh5 = 1
+fisheries.period.start.fsh5 = 0
 fisheries.rate.byperiod.fsh5 = 1
 fisheries.seasonality.file.fsh5 = input/fisheries/fishing-seasonality-mesopelagic.csv
 fisheries.selectivity.type.fsh5 = 0
@@ -680,8 +671,8 @@ fisheries.movement.file.map5 = input/fisheries/mapFleets.nc
 # Fishery 6 (redeye)
 fisheries.rate.base.log.enabled.fsh6 = FALSE
 fisheries.rate.base.fsh6 = 0.05010653
-fisheries.season.number.fsh6 = 1
-fisheries.season.start.fsh6 = 0
+fisheries.period.number.fsh6 = 1
+fisheries.period.start.fsh6 = 0
 fisheries.rate.byperiod.fsh6 = 1
 fisheries.seasonality.file.fsh6 = input/fisheries/fishing-seasonality-redeye.csv
 fisheries.selectivity.type.fsh6 = 0
@@ -696,8 +687,8 @@ fisheries.movement.file.map6 = input/fisheries/mapFleets.nc
 # Fishery 7 (sardine)
 fisheries.rate.base.log.enabled.fsh7 = FALSE
 fisheries.rate.base.fsh7 = 0.190335
-fisheries.season.number.fsh7 = 1
-fisheries.season.start.fsh7 = 0
+fisheries.period.number.fsh7 = 1
+fisheries.period.start.fsh7 = 0
 fisheries.rate.byperiod.fsh7 = 1
 fisheries.seasonality.file.fsh7 = input/fisheries/fishing-seasonality-sardine.csv
 fisheries.selectivity.type.fsh7 = 0
@@ -712,8 +703,8 @@ fisheries.movement.file.map7 = input/fisheries/mapFleets.nc
 # Fishery 8 (silverkob)
 fisheries.rate.base.log.enabled.fsh8 = FALSE
 fisheries.rate.base.fsh8 = 0.1381662
-fisheries.season.number.fsh8 = 1
-fisheries.season.start.fsh8 = 0
+fisheries.period.number.fsh8 = 1
+fisheries.period.start.fsh8 = 0
 fisheries.rate.byperiod.fsh8 = 1
 fisheries.seasonality.file.fsh8 = input/fisheries/fishing-seasonality-silver-kob.csv
 fisheries.selectivity.type.fsh8 = 0
@@ -728,8 +719,8 @@ fisheries.movement.file.map8 = input/fisheries/mapFleets.nc
 # Fishery 9 (snoek)
 fisheries.rate.base.log.enabled.fsh9 = FALSE
 fisheries.rate.base.fsh9 = 0.2289438
-fisheries.season.number.fsh9 = 1
-fisheries.season.start.fsh9 = 0
+fisheries.period.number.fsh9 = 1
+fisheries.period.start.fsh9 = 0
 fisheries.rate.byperiod.fsh9 = 1
 fisheries.seasonality.file.fsh9 = input/fisheries/fishing-seasonality-snoek.csv
 fisheries.selectivity.type.fsh9 = 0

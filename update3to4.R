@@ -66,6 +66,7 @@ sim = .getPar(ben, "simulation")
 sim0 = .getPar(sim, "nschool", invert=TRUE)
 sim0 = .getPar(sim0, "nspecies", invert=TRUE)
 sim0 = .getPar(sim0, "nplankton", invert=TRUE)
+sim0[["simulation.nsimulation"]] = 1
 
 sim1 = .getPar(sim, "nschool")
 
@@ -228,6 +229,9 @@ acc_file = file.path(attr(acc_file, "path"), acc_file)
 
 acc = read.csv2(acc_file, check.names = FALSE)
 
+names(acc) = gsub(names(acc), pattern="year$", replacement = "")
+acc[, 1] = gsub(acc[, 1], pattern="year$", replacement = "")
+
 if(exists("plk_rename")) {
   new = plk_rename[acc[,1]]
   acc[!is.na(new), 1] = new[!is.na(new)]
@@ -236,10 +240,10 @@ if(exists("plk_rename")) {
 write.csv(acc, file=file.path(base, "input", basename(acc_file)), quote = FALSE, row.names = FALSE)
 
 out1 = list()
+out1[["predation.accessibility.stage.structure"]] = .getPar(ben, "predation.accessibility.stage.structure")
 out1[["predation.accessibility.file"]] = file.path("input", basename(acc_file))
-
-out1 = .getPar(ben, "predation.accessibility.stage")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
 
 pars = c("predation.efficiency.critical", "predation.ingestion.rate.max")
 
@@ -340,8 +344,8 @@ for(i in seq_along(fsh)) {
   out1 = list()
   out1[[sprintf("fisheries.rate.base.log.enabled.fsh%d", i-1)]] = FALSE
   out1[[sprintf("fisheries.rate.base.fsh%d", i-1)]] = Frate
-  out1[[sprintf("fisheries.season.number.fsh%d", i-1)]] = 1
-  out1[[sprintf("fisheries.season.start.fsh%d", i-1)]] = 0
+  out1[[sprintf("fisheries.period.number.fsh%d", i-1)]] = 1
+  out1[[sprintf("fisheries.period.start.fsh%d", i-1)]] = 0
   out1[[sprintf("fisheries.rate.byperiod.fsh%d", i-1)]] = 1
   out1[[sprintf("fisheries.seasonality.file.fsh%d", i-1)]] = Fseason
   out1[[sprintf("fisheries.selectivity.type.fsh%d", i-1)]] = 0
