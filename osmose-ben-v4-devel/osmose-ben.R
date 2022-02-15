@@ -597,6 +597,153 @@ movement.file.map26 = input/maps/snoek.nc
 
 # Fisheries configuration -------------------------------------------------
 
+fisheries.catchability.file = input/fisheries/accessibility.csv
+fisheries.discards.file = input/fisheries/discards.csv
+
+# Fishery 0 (anchovy)
+fisheries.rate.base.log.enabled.fsh0 = FALSE
+fisheries.rate.base.fsh0 = 0.1419102
+fisheries.season.number.fsh0 = 1
+fisheries.season.start.fsh0 = 0
+fisheries.rate.byperiod.fsh0 = 1
+fisheries.seasonality.file.fsh0 = input/fisheries/fishing-seasonality-anchovy.csv
+fisheries.selectivity.type.fsh0 = 0
+fisheries.selectivity.l50.fsh0 = 8.7
+fisheries.selectivity.l75.fsh0 = 8.8
+
+fisheries.movement.fishery.map0 = fishery.anchovy
+fisheries.movement.variable.map0 = area
+fisheries.movement.nsteps.year.map0 = 24
+fisheries.movement.file.map0 = input/fisheries/mapFleets.nc
+
+# Fishery 2 (shallowwaterhake)
+fisheries.rate.base.log.enabled.fsh2 = FALSE
+fisheries.rate.base.fsh2 = 0.3339702
+fisheries.season.number.fsh2 = 1
+fisheries.season.start.fsh2 = 0
+fisheries.rate.byperiod.fsh2 = 1
+fisheries.seasonality.file.fsh2 = input/fisheries/fishing-seasonality-shallow-water-hake.csv
+fisheries.selectivity.type.fsh2 = 0
+fisheries.selectivity.l50.fsh2 = 32
+fisheries.selectivity.l75.fsh2 = 32.3
+
+fisheries.movement.fishery.map2 = fishery.shallowwaterhake
+fisheries.movement.variable.map2 = area
+fisheries.movement.nsteps.year.map2 = 24
+fisheries.movement.file.map2 = input/fisheries/mapFleets.nc
+
+# Fishery 3 (deepwaterhake)
+fisheries.rate.base.log.enabled.fsh3 = FALSE
+fisheries.rate.base.fsh3 = 0.3566318
+fisheries.season.number.fsh3 = 1
+fisheries.season.start.fsh3 = 0
+fisheries.rate.byperiod.fsh3 = 1
+fisheries.seasonality.file.fsh3 = input/fisheries/fishing-seasonality-deep-water-hake.csv
+fisheries.selectivity.type.fsh3 = 0
+fisheries.selectivity.l50.fsh3 = 28.3
+fisheries.selectivity.l75.fsh3 = 28.6
+
+fisheries.movement.fishery.map3 = fishery.deepwaterhake
+fisheries.movement.variable.map3 = area
+fisheries.movement.nsteps.year.map3 = 24
+fisheries.movement.file.map3 = input/fisheries/mapFleets.nc
+
+# Fishery 4 (horsemackerel)
+fisheries.rate.base.log.enabled.fsh4 = FALSE
+fisheries.rate.base.fsh4 = 0.05028479
+fisheries.season.number.fsh4 = 1
+fisheries.season.start.fsh4 = 0
+fisheries.rate.byperiod.fsh4 = 1
+fisheries.seasonality.file.fsh4 = input/fisheries/fishing-seasonality-horse-mackerel.csv
+fisheries.selectivity.type.fsh4 = 0
+fisheries.selectivity.l50.fsh4 = 20.9
+fisheries.selectivity.l75.fsh4 = 21.1
+
+fisheries.movement.fishery.map4 = fishery.horsemackerel
+fisheries.movement.variable.map4 = area
+fisheries.movement.nsteps.year.map4 = 24
+fisheries.movement.file.map4 = input/fisheries/mapFleets.nc
+
+# Fishery 5 (mesopelagic)
+fisheries.rate.base.log.enabled.fsh5 = FALSE
+fisheries.rate.base.fsh5 = 0.000923734
+fisheries.season.number.fsh5 = 1
+fisheries.season.start.fsh5 = 0
+fisheries.rate.byperiod.fsh5 = 1
+fisheries.seasonality.file.fsh5 = input/fisheries/fishing-seasonality-mesopelagic.csv
+fisheries.selectivity.type.fsh5 = 0
+fisheries.selectivity.l50.fsh5 = 5.5
+fisheries.selectivity.l75.fsh5 = 5.6
+
+fisheries.movement.fishery.map5 = fishery.mesopelagic
+fisheries.movement.variable.map5 = area
+fisheries.movement.nsteps.year.map5 = 24
+fisheries.movement.file.map5 = input/fisheries/mapFleets.nc
+
+# Fishery 6 (redeye)
+fisheries.rate.base.log.enabled.fsh6 = FALSE
+fisheries.rate.base.fsh6 = 0.05010653
+fisheries.season.number.fsh6 = 1
+fisheries.season.start.fsh6 = 0
+fisheries.rate.byperiod.fsh6 = 1
+fisheries.seasonality.file.fsh6 = input/fisheries/fishing-seasonality-redeye.csv
+fisheries.selectivity.type.fsh6 = 0
+fisheries.selectivity.l50.fsh6 = 12
+fisheries.selectivity.l75.fsh6 = 12.1
+
+fisheries.movement.fishery.map6 = fishery.redeye
+fisheries.movement.variable.map6 = area
+fisheries.movement.nsteps.year.map6 = 24
+fisheries.movement.file.map6 = input/fisheries/mapFleets.nc
+
+# Fishery 7 (sardine)
+fisheries.rate.base.log.enabled.fsh7 = FALSE
+fisheries.rate.base.fsh7 = 0.190335
+fisheries.season.number.fsh7 = 1
+fisheries.season.start.fsh7 = 0
+fisheries.rate.byperiod.fsh7 = 1
+fisheries.seasonality.file.fsh7 = input/fisheries/fishing-seasonality-sardine.csv
+fisheries.selectivity.type.fsh7 = 0
+fisheries.selectivity.l50.fsh7 = 12.4
+fisheries.selectivity.l75.fsh7 = 12.5
+
+fisheries.movement.fishery.map7 = fishery.sardine
+fisheries.movement.variable.map7 = area
+fisheries.movement.nsteps.year.map7 = 24
+fisheries.movement.file.map7 = input/fisheries/mapFleets.nc
+
+# Fishery 8 (silverkob)
+fisheries.rate.base.log.enabled.fsh8 = FALSE
+fisheries.rate.base.fsh8 = 0.1381662
+fisheries.season.number.fsh8 = 1
+fisheries.season.start.fsh8 = 0
+fisheries.rate.byperiod.fsh8 = 1
+fisheries.seasonality.file.fsh8 = input/fisheries/fishing-seasonality-silver-kob.csv
+fisheries.selectivity.type.fsh8 = 0
+fisheries.selectivity.l50.fsh8 = 29.8
+fisheries.selectivity.l75.fsh8 = 30.1
+
+fisheries.movement.fishery.map8 = fishery.silverkob
+fisheries.movement.variable.map8 = area
+fisheries.movement.nsteps.year.map8 = 24
+fisheries.movement.file.map8 = input/fisheries/mapFleets.nc
+
+# Fishery 9 (snoek)
+fisheries.rate.base.log.enabled.fsh9 = FALSE
+fisheries.rate.base.fsh9 = 0.2289438
+fisheries.season.number.fsh9 = 1
+fisheries.season.start.fsh9 = 0
+fisheries.rate.byperiod.fsh9 = 1
+fisheries.seasonality.file.fsh9 = input/fisheries/fishing-seasonality-snoek.csv
+fisheries.selectivity.type.fsh9 = 0
+fisheries.selectivity.l50.fsh9 = 69
+fisheries.selectivity.l75.fsh9 = 69.7
+
+fisheries.movement.fishery.map9 = fishery.snoek
+fisheries.movement.variable.map9 = area
+fisheries.movement.nsteps.year.map9 = 24
+fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
+
 # Output configuration ----------------------------------------------------
 
 output.start.year = 0
@@ -692,3 +839,16 @@ spatialdg.enabled = FALSE
 spatialegg.enabled = FALSE
 
 # Advanced parameters -----------------------------------------------------
+
+osmose.version = 4.3.2
+
+# Simulation restart parameters
+simulation.restart.recordfrequency.ndt = 24
+population.seeding.year.max = 30
+
+ltl.java.classname = fr.ird.osmose.ltl.LTLFastForcing
+
+# EV-OSMOSE activation
+simulation.bioen.enabled = FALSE
+simulation.genetic.enabled = FALSE
+simulation.incoming.flux.enabled = TRUE
