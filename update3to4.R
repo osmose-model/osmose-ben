@@ -74,7 +74,7 @@ write_osmose(as.matrix(sim1), file=output, append=TRUE, col.names = FALSE, sep="
 
 # convert grid to ncdf
 
-dir.create(file.path(base, "input"), recursive = TRUE, showWarnings = FALSE)
+suppressWarnings(dir.create(file.path(base, "input"), recursive = TRUE, showWarnings = FALSE))
 
 grid_file = .getPar(ben, "grid.mask.file")
 grid = as.matrix(read.csv(file.path(attr(grid_file, "path"), grid_file), sep=";", dec=".", header = FALSE)) # non ISO format!
@@ -168,7 +168,7 @@ write_osmose(as.matrix(.getPar(ben, "species.relativefecundity")), file=output, 
 rep_files = .getPar(ben, "reproduction.season.file")
 rep_files = sapply(rep_files, function(x) file.path(attr(x, "path"), x))
 
-dir.create(file.path(base, "input", "reproduction"), recursive = TRUE)
+suppressWarnings(dir.create(file.path(base, "input", "reproduction"), recursive = TRUE))
 file.copy(rep_files, to=file.path(base, "input", "reproduction"))
 
 rep_files = .getPar(ben, "reproduction.season.file")
@@ -262,7 +262,7 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 
 cat("\n# Movement configuration --------------------------------------------------\n", file=output, append = TRUE)
 
-dir.create(file.path(base, "input", "maps"), recursive = TRUE)
+suppressWarnings(dir.create(file.path(base, "input", "maps"), recursive = TRUE))
 
 pars = c("movement.distribution.method", "movement.randomwalk.range")
 
@@ -276,12 +276,90 @@ for(i in seq_along(out1)) {
   write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
 
-
 cat("\n# Fisheries configuration -------------------------------------------------\n", file=output, append = TRUE)
 
-# copy grid as fishing area (check is one map per fishery, run humboldt)
+fsh.dir = file.path(base, "input", "fisheries")
+suppressWarnings(dir.create(fsh.dir))
+# create generic map (identical to mask)
+fleetMap = array(dim=c(dim(grid), .getPar(ben, "simulation.time.ndt")))
+fleetMap[] = as.numeric(grid)
+fleetMap[fleetMap<0] = NA
+dim = setNames(lapply(base::dim(fleetMap), seq_len), nm=c("x", "y", "time"))
+file = file.path(fsh.dir, "mapFleets.nc")
+write_ncdf(fleetMap, filename = file, varid = "area",
+           dim=dim, missval = -99, unlim="time")
+
+# update recruitment length
+
+rec_age = .getPar(ben, "mortality.fishing.recruitment.age")
+if(!is.null(rec_age)) {
+
+  rec = spp
+  names(rec) = gsub(names(rec), pattern="species.name", replacement = "mortality.fishing.recruitment.size")
+
+  for(i in seq_len(nspp) - 1) {
+    this = .getPar(ben, sp=i)
+    len = .getPar(this, "mortality.fishing.recruitment.size")
+    if(!is.null(len)) {
+      rec[[i+1]] = len
+    } else {
+      age = .getPar(this, "mortality.fishing.recruitment.age")
+      rec[[i+1]] = round(osmose.extras:::VB(age, this), 1)
+    }
+  }
+}
+
 # create catchabiilty and discards file
+
+form = matrix(0, nrow=nspp, ncol=nspp)
+diag(form) = 1
+rownames(form) = unlist(spp)
+colnames(form) = paste("fishery", unlist(spp), sep=".")
+form = form[, fsh>0]
+access = form
+discards = 0*form
+
+write_osmose(form, file=file.path(base, "input","fisheries", "accessibility.csv"))
+write_osmose(0*form, file=file.path(base, "input","fisheries", "discards.csv"))
+
+out1 = list()
+out1[["fisheries.catchability.file"]] = file.path("input","fisheries", "accessibility.csv")
+out1[["fisheries.discards.file"]] = file.path("input","fisheries", "discards.csv")
+write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
 # write each fishery (knife-edge)
+
+for(i in seq_along(fsh)) {
+
+  psp = .getPar(ben, sp=i-1)
+  Frate = .getPar(psp, "mortality.fishing.rate.sp")
+  if(Frate==0) next
+  Fseason = .getPar(psp, "mortality.fishing.season.distrib.file")
+  file.copy(file.path(attr(Fseason, "path"), Fseason), to=file.path(base, "input", "fisheries"))
+  Fseason = file.path("input", "fisheries", basename(Fseason))
+
+  cat("\n# Fishery", i-1, sprintf("(%s)", spp[[i]]), file=output, append = TRUE)
+  out1 = list()
+  out1[[sprintf("fisheries.rate.base.log.enabled.fsh%d", i-1)]] = FALSE
+  out1[[sprintf("fisheries.rate.base.fsh%d", i-1)]] = Frate
+  out1[[sprintf("fisheries.season.number.fsh%d", i-1)]] = 1
+  out1[[sprintf("fisheries.season.start.fsh%d", i-1)]] = 0
+  out1[[sprintf("fisheries.rate.byperiod.fsh%d", i-1)]] = 1
+  out1[[sprintf("fisheries.seasonality.file.fsh%d", i-1)]] = Fseason
+  out1[[sprintf("fisheries.selectivity.type.fsh%d", i-1)]] = 0
+  out1[[sprintf("fisheries.selectivity.l50.fsh%d", i-1)]] = .getPar(rec, sp=i-1)
+  out1[[sprintf("fisheries.selectivity.l75.fsh%d", i-1)]] = round(1.01*.getPar(rec, sp=i-1), 1)
+  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+  out1 = list()
+  out1[[sprintf("fisheries.movement.fishery.map%d", i-1)]]  = paste("fishery", spp[[i]], sep=".")
+  out1[[sprintf("fisheries.movement.variable.map%d", i-1)]] = "area"
+  out1[[sprintf("fisheries.movement.nsteps.year.map%d", i-1)]] = 24
+  out1[[sprintf("fisheries.movement.file.map%d", i-1)]] = file.path("input", "fisheries", "mapFleets.nc")
+  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+}
+
 
 cat("\n# Output configuration ----------------------------------------------------\n", file=output, append = TRUE)
 
@@ -416,7 +494,7 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 cat("\n# Simulation restart parameters", file=output, append = TRUE)
 out = list()
 out[["simulation.restart.recordfrequency.ndt"]] = 24
-out[["population.initialization.file"]] = input/initial_conditions/humboldt-n_1992.nc
+out[["population.initialization.file"]] = NULL
 out[["population.seeding.year.max"]] = .getPar(ben, "population.seeding.year.max")
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
