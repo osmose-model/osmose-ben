@@ -9,6 +9,7 @@ library(kali)
 base    = "osmose-ben_v4_devel"
 cfg     = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
+nc_fsh  = FALSE
 
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
 
@@ -73,13 +74,14 @@ sim1 = .getPar(sim, "nschool")
 write_osmose(as.matrix(sim0), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 write_osmose(as.matrix(sim1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+ndt = .getPar(ben, "simulation.time.ndtperyear")
 # convert grid to ncdf
 
 suppressWarnings(dir.create(file.path(base, "input"), recursive = TRUE, showWarnings = FALSE))
 
 grid_file = .getPar(ben, "grid.mask.file")
-grid = as.matrix(read.csv(file.path(attr(grid_file, "path"), grid_file), sep=";", dec=".", header = FALSE)) # non ISO format!
-grid = rotate(grid)
+csvgrid = as.matrix(read.csv(file.path(attr(grid_file, "path"), grid_file), sep=";", dec=".", header = FALSE)) # non ISO format!
+grid = rotate(csvgrid)
 grid[grid==-99] = NA
 grid = 0 + !grid
 
@@ -232,6 +234,12 @@ acc = read.csv2(acc_file, check.names = FALSE)
 names(acc) = gsub(names(acc), pattern="year$", replacement = "")
 acc[, 1] = gsub(acc[, 1], pattern="year$", replacement = "")
 
+names(acc) = gsub(names(acc), pattern="-", replacement = "")
+acc[, 1] = gsub(acc[, 1], pattern="-", replacement = "")
+
+names(acc) = gsub(names(acc), pattern=">.*", replacement = "")
+acc[, 1] = gsub(acc[, 1], pattern=">.*", replacement = "")
+
 if(exists("plk_rename")) {
   new = plk_rename[acc[,1]]
   acc[!is.na(new), 1] = new[!is.na(new)]
@@ -266,6 +274,11 @@ cat("\n# Movement configuration ------------------------------------------------
 
 suppressWarnings(dir.create(file.path(base, "input", "maps"), recursive = TRUE))
 
+out1 = list()
+out1[["movement.checks.enabled"]] = FALSE
+out1[["movement.netcdf.enabled"]] = TRUE
+write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
 pars = c("movement.distribution.method", "movement.randomwalk.range")
 
 for(ipar in pars) {
@@ -291,8 +304,12 @@ file = file.path(fsh.dir, "mapFleets.nc")
 write_ncdf(fleetMap, filename = file, varid = "area",
            dim=dim, missval = -99, unlim="time")
 
-# update recruitment length
+fshgrid = csvgrid
+fshgrid[fshgrid==0] = 1
+write.table(fshgrid, file=file.path(fsh.dir, "mapFleets.csv"), row.names = FALSE,
+          col.names = FALSE, sep = ",", dec=".")
 
+# update recruitment length
 rec_age = .getPar(ben, "mortality.fishing.recruitment.age")
 if(!is.null(rec_age)) {
 
@@ -325,7 +342,7 @@ write_osmose(form, file=file.path(base, "input","fisheries", "catchability.csv")
 write_osmose(0*form, file=file.path(base, "input","fisheries", "discards.csv"))
 
 out1 = list()
-out1[["fisheries.catchability.file"]] = file.path("input","fisheries", "accessibility.csv")
+out1[["fisheries.catchability.file"]] = file.path("input","fisheries", "catchability.csv")
 out1[["fisheries.discards.file"]] = file.path("input","fisheries", "discards.csv")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
@@ -353,12 +370,22 @@ for(i in seq_along(fsh)) {
   out1[[sprintf("fisheries.selectivity.l75.fsh%d", i-1)]] = round(1.01*.getPar(rec, sp=i-1), 1)
   write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
-  out1 = list()
-  out1[[sprintf("fisheries.movement.fishery.map%d", i-1)]]  = paste("fishery", spp[[i]], sep=".")
-  out1[[sprintf("fisheries.movement.variable.map%d", i-1)]] = "area"
-  out1[[sprintf("fisheries.movement.nsteps.year.map%d", i-1)]] = 24
-  out1[[sprintf("fisheries.movement.file.map%d", i-1)]] = file.path("input", "fisheries", "mapFleets.nc")
-  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+  if(isTRUE(nc_fsh)) {
+    out1 = list()
+    out1[[sprintf("fisheries.movement.fishery.map%d", i-1)]]  = paste("fishery", spp[[i]], sep=".")
+    out1[[sprintf("fisheries.movement.variable.map%d", i-1)]] = "area"
+    out1[[sprintf("fisheries.movement.nsteps.year.map%d", i-1)]] = 24
+    out1[[sprintf("fisheries.movement.file.map%d", i-1)]] = file.path("input", "fisheries", "mapFleets.nc")
+    write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+  } else {
+    out1 = list()
+    out1[[sprintf("fisheries.movement.fishery.map%d", i-1)]]  = paste("fishery", spp[[i]], sep=".")
+    out1[[sprintf("fisheries.movement.season.map%d", i-1)]] = paste(seq_len(ndt)-1, collapse=",")
+    out1[[sprintf("fisheries.movement.year.min.map%d", i-1)]] = 0
+    out1[[sprintf("fisheries.movement.year.max.map%d", i-1)]] = .getPar(ben, "simulation.time.nyear")
+    out1[[sprintf("fisheries.movement.file.map%d", i-1)]] = file.path("input", "fisheries", "mapFleets.csv")
+    write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+  }
 
 }
 
@@ -377,114 +404,116 @@ out1[["output.fishery.enabled"]] = TRUE
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["yield.biomass.enabled"]] = TRUE
-out[["yield.biomass.bySize.enabled"]] = FALSE
-out[["yield.biomass.byAge.enabled"]] = FALSE
-out[["yield.abundance.enabled"]] = FALSE
-out[["yield.abundance.bySize.enabled"]] = FALSE
-out[["yield.abundance.byAge.enabled"]] = FALSE
+out[["output.yield.biomass.enabled"]] = TRUE
+out[["output.yield.biomass.bySize.enabled"]] = FALSE
+out[["output.yield.biomass.byAge.enabled"]] = FALSE
+out[["output.yield.abundance.enabled"]] = FALSE
+out[["output.yield.abundance.bySize.enabled"]] = FALSE
+out[["output.yield.abundance.byAge.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 out = list()
-out[["yield.biomass.netcdf.enabled"]] = FALSE
-out[["yield.biomass.bySize.netcdf.enabled"]] = FALSE
-out[["yield.biomass.byage.netcdf.enabled"]] = FALSE
-out[["yield.abundance.netcdf.enabled"]] = FALSE
-out[["yield.abundance.bySize.netcdf.enabled"]] = FALSE
-out[["yield.abundance.byage.netcdf.enabled"]] = FALSE
-write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
-
-out = list()
-out[["biomass.enabled"]] = TRUE
-out[["biomass.bysize.enabled"]] = FALSE
-out[["biomass.byage.enabled"]] = FALSE
-out[["biomass.bytl.enabled"]] = FALSE
+out[["output.yield.biomass.netcdf.enabled"]] = FALSE
+out[["output.yield.biomass.bySize.netcdf.enabled"]] = FALSE
+out[["output.yield.biomass.byage.netcdf.enabled"]] = FALSE
+out[["output.yield.abundance.netcdf.enabled"]] = FALSE
+out[["output.yield.abundance.bySize.netcdf.enabled"]] = FALSE
+out[["output.yield.abundance.byage.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["biomass.netcdf.enabled"]] = FALSE
-out[["biomass.bysize.netcdf.enabled"]] = FALSE
-out[["biomass.byage.netcdf.enabled"]] = FALSE
-out[["biomass.bytl.netcdf.enabled"]] = FALSE
+out[["output.biomass.enabled"]] = TRUE
+out[["output.biomass.bysize.enabled"]] = FALSE
+out[["output.biomass.byage.enabled"]] = FALSE
+out[["output.biomass.bytl.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["abundance.enabled"]] = FALSE
-out[["abundance.age1.enabled"]] = FALSE
-out[["abundance.bysize.enabled"]] = FALSE
-out[["abundance.byage.enabled"]] = FALSE
-out[["abundance.bytl.enabled"]] = FALSE
+out[["output.biomass.netcdf.enabled"]] = FALSE
+out[["output.biomass.bysize.netcdf.enabled"]] = FALSE
+out[["output.biomass.byage.netcdf.enabled"]] = FALSE
+out[["output.biomass.bytl.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["abundance.netcdf.enabled"]] = FALSE
-out[["abundance.bysize.netcdf.enabled"]] = FALSE
-out[["abundance.byage.netcdf.enabled"]] = FALSE
+out[["output.abundance.enabled"]] = FALSE
+out[["output.abundance.age1.enabled"]] = FALSE
+out[["output.abundance.bysize.enabled"]] = FALSE
+out[["output.abundance.byage.enabled"]] = FALSE
+out[["output.abundance.bytl.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["meanSize.byAge.netcdf.enabled"]] = FALSE
+out[["output.abundance.netcdf.enabled"]] = FALSE
+out[["output.abundance.bysize.netcdf.enabled"]] = FALSE
+out[["output.abundance.byage.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["diet.pressure.netcdf.enabled"]] = FALSE
-out[["diet.composition.netcdf.enabled"]] = FALSE
-out[["diet.composition.byage.netcdf.enabled"]] = FALSE
-out[["diet.composition.bysize.netcdf.enabled"]] = FALSE
+out[["output.meanSize.byAge.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["spatial.enabled"]] = FALSE
-out[["spatial.ltl.enabled"]] = FALSE
-out[["spatialabundance.enabled"]] = FALSE
-out[["spatialbiomass.enabled"]] = FALSE
-out[["spatialsize.enabled"]] = FALSE
-out[["spatialtl.enabled"]] = FALSE
-out[["spatialsizespecies.enabled"]] = FALSE
-out[["spatialagespecies.enabled"]] = FALSE
-out[["spatial.yield.biomass.enabled"]] = FALSE
-out[["spatial.yield.abundance.enabled"]] = FALSE
+out[["output.diet.pressure.netcdf.enabled"]] = FALSE
+out[["output.diet.composition.netcdf.enabled"]] = FALSE
+out[["output.diet.composition.byage.netcdf.enabled"]] = FALSE
+out[["output.diet.composition.bysize.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["mortality.enabled"]] = FALSE
-out[["mortality.perSpecies.byage.enabled"]] = FALSE
-out[["mortality.perSpecies.bysize.enabled"]] = FALSE
-out[["mortality.additional.bySize.enabled"]] = FALSE
-out[["mortality.additional.byAge.enabled"]] = FALSE
-out[["mortality.additional.byAge.enabled"]] = FALSE
-out[["mortality.additionalN.bySize.enabled"]] = FALSE
-out[["mortality.additionalN.byAge.enabled"]] = FALSE
-out[["mortality.perSpecies.byage.netcdf.enabled"]] = FALSE
+out[["output.spatial.enabled"]] = FALSE
+out[["output.spatial.ltl.enabled"]] = FALSE
+out[["output.spatialabundance.enabled"]] = FALSE
+out[["output.spatialbiomass.enabled"]] = FALSE
+out[["output.spatialsize.enabled"]] = FALSE
+out[["output.spatialtl.enabled"]] = FALSE
+out[["output.spatialsizespecies.enabled"]] = FALSE
+out[["output.spatialagespecies.enabled"]] = FALSE
+out[["output.spatial.yield.biomass.enabled"]] = FALSE
+out[["output.spatial.yield.abundance.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["size.enabled"]] = FALSE
-out[["size.catch.enabled"]] = FALSE
-out[["tl.enabled"]] = FALSE
-out[["tl.catch.enabled"]] = FALSE
-out[["meanTL.bySize.enabled"]] = FALSE
-out[["meanTL.byAge.enabled"]] = FALSE
-out[["weight.enabled"]] = FALSE
-out[["meanSize.byAge.enabled"]] = FALSE
+out[["output.mortality.enabled"]] = FALSE
+out[["output.mortality.perSpecies.byage.enabled"]] = FALSE
+out[["output.mortality.perSpecies.bysize.enabled"]] = FALSE
+out[["output.mortality.additional.bySize.enabled"]] = FALSE
+out[["output.mortality.additional.byAge.enabled"]] = FALSE
+out[["output.mortality.additional.byAge.enabled"]] = FALSE
+out[["output.mortality.additionalN.bySize.enabled"]] = FALSE
+out[["output.mortality.additionalN.byAge.enabled"]] = FALSE
+out[["output.mortality.perSpecies.byage.netcdf.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["diet.composition.enabled"]] = FALSE
-out[["diet.composition.byage.enabled"]] = FALSE
-out[["diet.composition.bysize.enabled"]] = FALSE
-out[["diet.pressure.enabled"]] = FALSE
-out[["diet.pressure.enabled"]] = FALSE
-out[["diet.pressure.byage.enabled"]] = FALSE
-out[["diet.pressure.bysize.enabled"]] = FALSE
-out[["diet.success.enabled"]] = FALSE
+out[["output.size.enabled"]] = FALSE
+out[["output.size.catch.enabled"]] = FALSE
+out[["output.tl.enabled"]] = FALSE
+out[["output.tl.catch.enabled"]] = FALSE
+out[["output.meanTL.bySize.enabled"]] = FALSE
+out[["output.meanTL.byAge.enabled"]] = FALSE
+out[["output.weight.enabled"]] = FALSE
+out[["output.meanSize.byAge.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
-out[["spatialenet.enabled"]] = FALSE
-out[["spatialenetlarvae.enabled"]] = FALSE
-out[["spatialenetjuv.enabled"]] = FALSE
-out[["spatialdg.enabled"]] = FALSE
-out[["spatialegg.enabled"]] = FALSE
+out[["output.diet.composition.enabled"]] = FALSE
+out[["output.diet.composition.byage.enabled"]] = FALSE
+out[["output.diet.composition.bysize.enabled"]] = FALSE
+out[["output.diet.pressure.enabled"]] = FALSE
+out[["output.diet.pressure.enabled"]] = FALSE
+out[["output.diet.pressure.byage.enabled"]] = FALSE
+out[["output.diet.pressure.bysize.enabled"]] = FALSE
+out[["output.diet.success.enabled"]] = FALSE
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+out = list()
+out[["output.spatialenet.enabled"]] = FALSE
+out[["output.spatialenetlarvae.enabled"]] = FALSE
+out[["output.spatialenetjuv.enabled"]] = FALSE
+out[["output.spatialdg.enabled"]] = FALSE
+out[["output.spatialegg.enabled"]] = FALSE
+out[["output.spatialMstarv.enabled"]] = FALSE
+out[["output.spatialMpred.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 cat("\n# Advanced parameters -----------------------------------------------------\n", file=output, append = TRUE)

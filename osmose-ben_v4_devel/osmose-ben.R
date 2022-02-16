@@ -372,6 +372,9 @@ predation.predprey.stage.threshold.sp9 = NULL
 
 # Movement configuration --------------------------------------------------
 
+movement.checks.enabled = FALSE
+movement.netcdf.enabled = TRUE
+
 movement.distribution.method.sp0 = maps
 movement.distribution.method.sp1 = maps
 movement.distribution.method.sp2 = maps
@@ -585,7 +588,7 @@ movement.file.map26 = input/maps/snoek.nc
 
 # Fisheries configuration -------------------------------------------------
 
-fisheries.catchability.file = input/fisheries/accessibility.csv
+fisheries.catchability.file = input/fisheries/catchability.csv
 fisheries.discards.file = input/fisheries/discards.csv
 
 # Fishery 0 (anchovy)
@@ -600,9 +603,10 @@ fisheries.selectivity.l50.fsh0 = 8.7
 fisheries.selectivity.l75.fsh0 = 8.8
 
 fisheries.movement.fishery.map0 = fishery.anchovy
-fisheries.movement.variable.map0 = area
-fisheries.movement.nsteps.year.map0 = 24
-fisheries.movement.file.map0 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map0 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map0 = 0
+fisheries.movement.year.max.map0 = 100
+fisheries.movement.file.map0 = input/fisheries/mapFleets.csv
 
 # Fishery 2 (shallowwaterhake)
 fisheries.rate.base.log.enabled.fsh2 = FALSE
@@ -616,9 +620,10 @@ fisheries.selectivity.l50.fsh2 = 32
 fisheries.selectivity.l75.fsh2 = 32.3
 
 fisheries.movement.fishery.map2 = fishery.shallowwaterhake
-fisheries.movement.variable.map2 = area
-fisheries.movement.nsteps.year.map2 = 24
-fisheries.movement.file.map2 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map2 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map2 = 0
+fisheries.movement.year.max.map2 = 100
+fisheries.movement.file.map2 = input/fisheries/mapFleets.csv
 
 # Fishery 3 (deepwaterhake)
 fisheries.rate.base.log.enabled.fsh3 = FALSE
@@ -632,9 +637,10 @@ fisheries.selectivity.l50.fsh3 = 28.3
 fisheries.selectivity.l75.fsh3 = 28.6
 
 fisheries.movement.fishery.map3 = fishery.deepwaterhake
-fisheries.movement.variable.map3 = area
-fisheries.movement.nsteps.year.map3 = 24
-fisheries.movement.file.map3 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map3 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map3 = 0
+fisheries.movement.year.max.map3 = 100
+fisheries.movement.file.map3 = input/fisheries/mapFleets.csv
 
 # Fishery 4 (horsemackerel)
 fisheries.rate.base.log.enabled.fsh4 = FALSE
@@ -648,9 +654,10 @@ fisheries.selectivity.l50.fsh4 = 20.9
 fisheries.selectivity.l75.fsh4 = 21.1
 
 fisheries.movement.fishery.map4 = fishery.horsemackerel
-fisheries.movement.variable.map4 = area
-fisheries.movement.nsteps.year.map4 = 24
-fisheries.movement.file.map4 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map4 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map4 = 0
+fisheries.movement.year.max.map4 = 100
+fisheries.movement.file.map4 = input/fisheries/mapFleets.csv
 
 # Fishery 5 (mesopelagic)
 fisheries.rate.base.log.enabled.fsh5 = FALSE
@@ -664,9 +671,10 @@ fisheries.selectivity.l50.fsh5 = 5.5
 fisheries.selectivity.l75.fsh5 = 5.6
 
 fisheries.movement.fishery.map5 = fishery.mesopelagic
-fisheries.movement.variable.map5 = area
-fisheries.movement.nsteps.year.map5 = 24
-fisheries.movement.file.map5 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map5 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map5 = 0
+fisheries.movement.year.max.map5 = 100
+fisheries.movement.file.map5 = input/fisheries/mapFleets.csv
 
 # Fishery 6 (redeye)
 fisheries.rate.base.log.enabled.fsh6 = FALSE
@@ -680,9 +688,10 @@ fisheries.selectivity.l50.fsh6 = 12
 fisheries.selectivity.l75.fsh6 = 12.1
 
 fisheries.movement.fishery.map6 = fishery.redeye
-fisheries.movement.variable.map6 = area
-fisheries.movement.nsteps.year.map6 = 24
-fisheries.movement.file.map6 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map6 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map6 = 0
+fisheries.movement.year.max.map6 = 100
+fisheries.movement.file.map6 = input/fisheries/mapFleets.csv
 
 # Fishery 7 (sardine)
 fisheries.rate.base.log.enabled.fsh7 = FALSE
@@ -696,9 +705,10 @@ fisheries.selectivity.l50.fsh7 = 12.4
 fisheries.selectivity.l75.fsh7 = 12.5
 
 fisheries.movement.fishery.map7 = fishery.sardine
-fisheries.movement.variable.map7 = area
-fisheries.movement.nsteps.year.map7 = 24
-fisheries.movement.file.map7 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map7 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map7 = 0
+fisheries.movement.year.max.map7 = 100
+fisheries.movement.file.map7 = input/fisheries/mapFleets.csv
 
 # Fishery 8 (silverkob)
 fisheries.rate.base.log.enabled.fsh8 = FALSE
@@ -712,9 +722,10 @@ fisheries.selectivity.l50.fsh8 = 29.8
 fisheries.selectivity.l75.fsh8 = 30.1
 
 fisheries.movement.fishery.map8 = fishery.silverkob
-fisheries.movement.variable.map8 = area
-fisheries.movement.nsteps.year.map8 = 24
-fisheries.movement.file.map8 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map8 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map8 = 0
+fisheries.movement.year.max.map8 = 100
+fisheries.movement.file.map8 = input/fisheries/mapFleets.csv
 
 # Fishery 9 (snoek)
 fisheries.rate.base.log.enabled.fsh9 = FALSE
@@ -728,9 +739,10 @@ fisheries.selectivity.l50.fsh9 = 69
 fisheries.selectivity.l75.fsh9 = 69.7
 
 fisheries.movement.fishery.map9 = fishery.snoek
-fisheries.movement.variable.map9 = area
-fisheries.movement.nsteps.year.map9 = 24
-fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
+fisheries.movement.season.map9 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+fisheries.movement.year.min.map9 = 0
+fisheries.movement.year.max.map9 = 100
+fisheries.movement.file.map9 = input/fisheries/mapFleets.csv
 
 # Output configuration ----------------------------------------------------
 
@@ -742,89 +754,91 @@ output.recordfrequency.ndt = 2
 output.cutoff.enabled = FALSE
 output.fishery.enabled = TRUE
 
-yield.biomass.enabled = TRUE
-yield.biomass.bySize.enabled = FALSE
-yield.biomass.byAge.enabled = FALSE
-yield.abundance.enabled = FALSE
-yield.abundance.bySize.enabled = FALSE
-yield.abundance.byAge.enabled = FALSE
+output.yield.biomass.enabled = TRUE
+output.yield.biomass.bySize.enabled = FALSE
+output.yield.biomass.byAge.enabled = FALSE
+output.yield.abundance.enabled = FALSE
+output.yield.abundance.bySize.enabled = FALSE
+output.yield.abundance.byAge.enabled = FALSE
 
-yield.biomass.netcdf.enabled = FALSE
-yield.biomass.bySize.netcdf.enabled = FALSE
-yield.biomass.byage.netcdf.enabled = FALSE
-yield.abundance.netcdf.enabled = FALSE
-yield.abundance.bySize.netcdf.enabled = FALSE
-yield.abundance.byage.netcdf.enabled = FALSE
+output.yield.biomass.netcdf.enabled = FALSE
+output.yield.biomass.bySize.netcdf.enabled = FALSE
+output.yield.biomass.byage.netcdf.enabled = FALSE
+output.yield.abundance.netcdf.enabled = FALSE
+output.yield.abundance.bySize.netcdf.enabled = FALSE
+output.yield.abundance.byage.netcdf.enabled = FALSE
 
-biomass.enabled = TRUE
-biomass.bysize.enabled = FALSE
-biomass.byage.enabled = FALSE
-biomass.bytl.enabled = FALSE
+output.biomass.enabled = TRUE
+output.biomass.bysize.enabled = FALSE
+output.biomass.byage.enabled = FALSE
+output.biomass.bytl.enabled = FALSE
 
-biomass.netcdf.enabled = FALSE
-biomass.bysize.netcdf.enabled = FALSE
-biomass.byage.netcdf.enabled = FALSE
-biomass.bytl.netcdf.enabled = FALSE
+output.biomass.netcdf.enabled = FALSE
+output.biomass.bysize.netcdf.enabled = FALSE
+output.biomass.byage.netcdf.enabled = FALSE
+output.biomass.bytl.netcdf.enabled = FALSE
 
-abundance.enabled = FALSE
-abundance.age1.enabled = FALSE
-abundance.bysize.enabled = FALSE
-abundance.byage.enabled = FALSE
-abundance.bytl.enabled = FALSE
+output.abundance.enabled = FALSE
+output.abundance.age1.enabled = FALSE
+output.abundance.bysize.enabled = FALSE
+output.abundance.byage.enabled = FALSE
+output.abundance.bytl.enabled = FALSE
 
-abundance.netcdf.enabled = FALSE
-abundance.bysize.netcdf.enabled = FALSE
-abundance.byage.netcdf.enabled = FALSE
+output.abundance.netcdf.enabled = FALSE
+output.abundance.bysize.netcdf.enabled = FALSE
+output.abundance.byage.netcdf.enabled = FALSE
 
-meanSize.byAge.netcdf.enabled = FALSE
+output.meanSize.byAge.netcdf.enabled = FALSE
 
-diet.pressure.netcdf.enabled = FALSE
-diet.composition.netcdf.enabled = FALSE
-diet.composition.byage.netcdf.enabled = FALSE
-diet.composition.bysize.netcdf.enabled = FALSE
+output.diet.pressure.netcdf.enabled = FALSE
+output.diet.composition.netcdf.enabled = FALSE
+output.diet.composition.byage.netcdf.enabled = FALSE
+output.diet.composition.bysize.netcdf.enabled = FALSE
 
-spatial.enabled = FALSE
-spatial.ltl.enabled = FALSE
-spatialabundance.enabled = FALSE
-spatialbiomass.enabled = FALSE
-spatialsize.enabled = FALSE
-spatialtl.enabled = FALSE
-spatialsizespecies.enabled = FALSE
-spatialagespecies.enabled = FALSE
-spatial.yield.biomass.enabled = FALSE
-spatial.yield.abundance.enabled = FALSE
+output.spatial.enabled = FALSE
+output.spatial.ltl.enabled = FALSE
+output.spatialabundance.enabled = FALSE
+output.spatialbiomass.enabled = FALSE
+output.spatialsize.enabled = FALSE
+output.spatialtl.enabled = FALSE
+output.spatialsizespecies.enabled = FALSE
+output.spatialagespecies.enabled = FALSE
+output.spatial.yield.biomass.enabled = FALSE
+output.spatial.yield.abundance.enabled = FALSE
 
-mortality.enabled = FALSE
-mortality.perSpecies.byage.enabled = FALSE
-mortality.perSpecies.bysize.enabled = FALSE
-mortality.additional.bySize.enabled = FALSE
-mortality.additional.byAge.enabled = FALSE
-mortality.additionalN.bySize.enabled = FALSE
-mortality.additionalN.byAge.enabled = FALSE
-mortality.perSpecies.byage.netcdf.enabled = FALSE
+output.mortality.enabled = FALSE
+output.mortality.perSpecies.byage.enabled = FALSE
+output.mortality.perSpecies.bysize.enabled = FALSE
+output.mortality.additional.bySize.enabled = FALSE
+output.mortality.additional.byAge.enabled = FALSE
+output.mortality.additionalN.bySize.enabled = FALSE
+output.mortality.additionalN.byAge.enabled = FALSE
+output.mortality.perSpecies.byage.netcdf.enabled = FALSE
 
-size.enabled = FALSE
-size.catch.enabled = FALSE
-tl.enabled = FALSE
-tl.catch.enabled = FALSE
-meanTL.bySize.enabled = FALSE
-meanTL.byAge.enabled = FALSE
-weight.enabled = FALSE
-meanSize.byAge.enabled = FALSE
+output.size.enabled = FALSE
+output.size.catch.enabled = FALSE
+output.tl.enabled = FALSE
+output.tl.catch.enabled = FALSE
+output.meanTL.bySize.enabled = FALSE
+output.meanTL.byAge.enabled = FALSE
+output.weight.enabled = FALSE
+output.meanSize.byAge.enabled = FALSE
 
-diet.composition.enabled = FALSE
-diet.composition.byage.enabled = FALSE
-diet.composition.bysize.enabled = FALSE
-diet.pressure.enabled = FALSE
-diet.pressure.byage.enabled = FALSE
-diet.pressure.bysize.enabled = FALSE
-diet.success.enabled = FALSE
+output.diet.composition.enabled = FALSE
+output.diet.composition.byage.enabled = FALSE
+output.diet.composition.bysize.enabled = FALSE
+output.diet.pressure.enabled = FALSE
+output.diet.pressure.byage.enabled = FALSE
+output.diet.pressure.bysize.enabled = FALSE
+output.diet.success.enabled = FALSE
 
-spatialenet.enabled = FALSE
-spatialenetlarvae.enabled = FALSE
-spatialenetjuv.enabled = FALSE
-spatialdg.enabled = FALSE
-spatialegg.enabled = FALSE
+output.spatialenet.enabled = FALSE
+output.spatialenetlarvae.enabled = FALSE
+output.spatialenetjuv.enabled = FALSE
+output.spatialdg.enabled = FALSE
+output.spatialegg.enabled = FALSE
+output.spatialMstarv.enabled = FALSE
+output.spatialMpred.enabled = FALSE
 
 # Advanced parameters -----------------------------------------------------
 
