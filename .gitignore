@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # jar files
 *.jar
+
+# output files
+osmose-ben_v4_devel/output/*.*
