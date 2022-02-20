@@ -9,7 +9,7 @@ library(kali)
 base    = "osmose-ben_v4_devel"
 cfg     = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
-nc_fsh  = FALSE
+nc_fsh  = TRUE
 
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
 
@@ -293,6 +293,10 @@ for(i in seq_along(out1)) {
 
 cat("\n# Fisheries configuration -------------------------------------------------\n", file=output, append = TRUE)
 
+out1 = list()
+out1[["fisheries.movement.netcdf.enabled"]] = nc_fsh
+write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
 fsh.dir = file.path(base, "input", "fisheries")
 suppressWarnings(dir.create(fsh.dir))
 # create generic map (identical to mask)
@@ -540,5 +544,5 @@ out[["simulation.genetic.enabled"]] = FALSE
 out[["simulation.incoming.flux.enabled"]] = TRUE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
-
+cat("Update complete.")
 
