@@ -42,4 +42,7 @@ vignettes/*.pdf
 *.jar
 
 # output files
-osmose-ben_v4_devel/output/*.*
+osmose-ben_v4_devel/output/
+
+# log files
+*.log
