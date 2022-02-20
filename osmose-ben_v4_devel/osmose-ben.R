@@ -588,6 +588,8 @@ movement.file.map26 = input/maps/snoek.nc
 
 # Fisheries configuration -------------------------------------------------
 
+fisheries.movement.netcdf.enabled = TRUE
+
 fisheries.catchability.file = input/fisheries/catchability.csv
 fisheries.discards.file = input/fisheries/discards.csv
 
@@ -603,10 +605,9 @@ fisheries.selectivity.l50.fsh0 = 8.7
 fisheries.selectivity.l75.fsh0 = 8.8
 
 fisheries.movement.fishery.map0 = fishery.anchovy
-fisheries.movement.season.map0 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map0 = 0
-fisheries.movement.year.max.map0 = 100
-fisheries.movement.file.map0 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map0 = area
+fisheries.movement.nsteps.year.map0 = 24
+fisheries.movement.file.map0 = input/fisheries/mapFleets.nc
 
 # Fishery 2 (shallowwaterhake)
 fisheries.rate.base.log.enabled.fsh2 = FALSE
@@ -620,10 +621,9 @@ fisheries.selectivity.l50.fsh2 = 32
 fisheries.selectivity.l75.fsh2 = 32.3
 
 fisheries.movement.fishery.map2 = fishery.shallowwaterhake
-fisheries.movement.season.map2 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map2 = 0
-fisheries.movement.year.max.map2 = 100
-fisheries.movement.file.map2 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map2 = area
+fisheries.movement.nsteps.year.map2 = 24
+fisheries.movement.file.map2 = input/fisheries/mapFleets.nc
 
 # Fishery 3 (deepwaterhake)
 fisheries.rate.base.log.enabled.fsh3 = FALSE
@@ -637,10 +637,9 @@ fisheries.selectivity.l50.fsh3 = 28.3
 fisheries.selectivity.l75.fsh3 = 28.6
 
 fisheries.movement.fishery.map3 = fishery.deepwaterhake
-fisheries.movement.season.map3 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map3 = 0
-fisheries.movement.year.max.map3 = 100
-fisheries.movement.file.map3 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map3 = area
+fisheries.movement.nsteps.year.map3 = 24
+fisheries.movement.file.map3 = input/fisheries/mapFleets.nc
 
 # Fishery 4 (horsemackerel)
 fisheries.rate.base.log.enabled.fsh4 = FALSE
@@ -654,10 +653,9 @@ fisheries.selectivity.l50.fsh4 = 20.9
 fisheries.selectivity.l75.fsh4 = 21.1
 
 fisheries.movement.fishery.map4 = fishery.horsemackerel
-fisheries.movement.season.map4 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map4 = 0
-fisheries.movement.year.max.map4 = 100
-fisheries.movement.file.map4 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map4 = area
+fisheries.movement.nsteps.year.map4 = 24
+fisheries.movement.file.map4 = input/fisheries/mapFleets.nc
 
 # Fishery 5 (mesopelagic)
 fisheries.rate.base.log.enabled.fsh5 = FALSE
@@ -671,10 +669,9 @@ fisheries.selectivity.l50.fsh5 = 5.5
 fisheries.selectivity.l75.fsh5 = 5.6
 
 fisheries.movement.fishery.map5 = fishery.mesopelagic
-fisheries.movement.season.map5 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map5 = 0
-fisheries.movement.year.max.map5 = 100
-fisheries.movement.file.map5 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map5 = area
+fisheries.movement.nsteps.year.map5 = 24
+fisheries.movement.file.map5 = input/fisheries/mapFleets.nc
 
 # Fishery 6 (redeye)
 fisheries.rate.base.log.enabled.fsh6 = FALSE
@@ -688,10 +685,9 @@ fisheries.selectivity.l50.fsh6 = 12
 fisheries.selectivity.l75.fsh6 = 12.1
 
 fisheries.movement.fishery.map6 = fishery.redeye
-fisheries.movement.season.map6 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map6 = 0
-fisheries.movement.year.max.map6 = 100
-fisheries.movement.file.map6 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map6 = area
+fisheries.movement.nsteps.year.map6 = 24
+fisheries.movement.file.map6 = input/fisheries/mapFleets.nc
 
 # Fishery 7 (sardine)
 fisheries.rate.base.log.enabled.fsh7 = FALSE
@@ -705,10 +701,9 @@ fisheries.selectivity.l50.fsh7 = 12.4
 fisheries.selectivity.l75.fsh7 = 12.5
 
 fisheries.movement.fishery.map7 = fishery.sardine
-fisheries.movement.season.map7 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map7 = 0
-fisheries.movement.year.max.map7 = 100
-fisheries.movement.file.map7 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map7 = area
+fisheries.movement.nsteps.year.map7 = 24
+fisheries.movement.file.map7 = input/fisheries/mapFleets.nc
 
 # Fishery 8 (silverkob)
 fisheries.rate.base.log.enabled.fsh8 = FALSE
@@ -722,10 +717,9 @@ fisheries.selectivity.l50.fsh8 = 29.8
 fisheries.selectivity.l75.fsh8 = 30.1
 
 fisheries.movement.fishery.map8 = fishery.silverkob
-fisheries.movement.season.map8 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map8 = 0
-fisheries.movement.year.max.map8 = 100
-fisheries.movement.file.map8 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map8 = area
+fisheries.movement.nsteps.year.map8 = 24
+fisheries.movement.file.map8 = input/fisheries/mapFleets.nc
 
 # Fishery 9 (snoek)
 fisheries.rate.base.log.enabled.fsh9 = FALSE
@@ -739,10 +733,9 @@ fisheries.selectivity.l50.fsh9 = 69
 fisheries.selectivity.l75.fsh9 = 69.7
 
 fisheries.movement.fishery.map9 = fishery.snoek
-fisheries.movement.season.map9 = 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23
-fisheries.movement.year.min.map9 = 0
-fisheries.movement.year.max.map9 = 100
-fisheries.movement.file.map9 = input/fisheries/mapFleets.csv
+fisheries.movement.variable.map9 = area
+fisheries.movement.nsteps.year.map9 = 24
+fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 
 # Output configuration ----------------------------------------------------
 

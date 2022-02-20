@@ -6,15 +6,20 @@ library(nctools)
 library(kali)
 
 # manual inputs
-base    = "osmose-ben_v4_devel"
-cfg     = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
-ltl_new = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
+base     = "osmose-ben_v4_devel"
+cfg      = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
+ltl_new  = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
+
+out_file = "osmose-ben.R"
+
 nc_fsh  = TRUE
+test_mov = FALSE
+map_dir = "maps"
 
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
 
 # start
-output = file.path(base, "osmose-ben.R")
+output = file.path(base, out_file)
 
 .readConfiguration = osmose.extras:::.readConfiguration
 .getPar = osmose.extras:::.getPar
@@ -272,7 +277,7 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 
 cat("\n# Movement configuration --------------------------------------------------\n", file=output, append = TRUE)
 
-suppressWarnings(dir.create(file.path(base, "input", "maps"), recursive = TRUE))
+suppressWarnings(dir.create(file.path(base, "input", map_dir), recursive = TRUE))
 
 out1 = list()
 out1[["movement.checks.enabled"]] = FALSE
@@ -285,7 +290,7 @@ for(ipar in pars) {
   write_osmose(as.matrix(.getPar(ben, ipar)), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
 
-out1 = update_maps(input=cfg, output=file.path(base, "input/maps"), conf=output, sep = ";")
+out1 = update_maps(input=cfg, output=file.path(base, "input", map_dir), conf=output, sep = ";", test=test_mov)
 
 for(i in seq_along(out1)) {
   write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
@@ -398,7 +403,7 @@ cat("\n# Output configuration --------------------------------------------------
 
 # keep main ones
 out1 = list()
-out1[["output.start.year"]] = 0
+out1[["output.start.year"]] = 2*.getPar(ben, "population.seeding.year.max")
 out1[["output.restart.enabled"]] = FALSE
 out1[["output.file.prefix "]] = tolower(.getPar(ben, "output.file.prefix"))
 out1[["output.step0.include"]] = FALSE
