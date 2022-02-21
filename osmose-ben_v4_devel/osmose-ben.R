@@ -739,7 +739,7 @@ fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 
 # Output configuration ----------------------------------------------------
 
-output.start.year = 0
+output.start.year = 60
 output.restart.enabled = FALSE
 output.file.prefix  = ben
 output.step0.include = FALSE
