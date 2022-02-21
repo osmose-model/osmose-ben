@@ -4,6 +4,11 @@
 
 # Setting the model -------------------------------------------------------
 
+movement.randomseed.fixed = TRUE
+reproduction.randomseed.fixed = TRUE
+simulation.fishing.mortality.enabled = TRUE
+stochastic.mortality.seed = 10
+
 simulation.nresource = 4
 simulation.nspecies = 10
 simulation.nfisheries = 9
