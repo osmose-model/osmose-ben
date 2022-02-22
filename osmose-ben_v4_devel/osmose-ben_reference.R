@@ -4,31 +4,26 @@
 
 # Setting the model -------------------------------------------------------
 
-movement.randomseed.fixed = TRUE
-reproduction.randomseed.fixed = TRUE
-simulation.fishing.mortality.enabled = TRUE
-stochastic.mortality.seed = 10
-
 simulation.nresource = 4
 simulation.nspecies = 10
 simulation.nfisheries = 9
 fisheries.enabled = TRUE
 fisheries.check.enabled = TRUE
 
-species.name.sp0 = anchovy
-species.name.sp1 = euphausiids
-species.name.sp2 = shallowwaterhake
-species.name.sp3 = deepwaterhake
+species.name.sp0 = euphausiids
+species.name.sp1 = anchovy
+species.name.sp2 = sardine
+species.name.sp3 = redeye
 species.name.sp4 = horsemackerel
 species.name.sp5 = mesopelagic
-species.name.sp6 = redeye
-species.name.sp7 = sardine
-species.name.sp8 = silverkob
-species.name.sp9 = snoek
-species.name.sp10 = sphy
-species.name.sp11 = lphy
-species.name.sp12 = szoo
-species.name.sp13 = lzoo
+species.name.sp6 = silverkob
+species.name.sp7 = snoek
+species.name.sp8 = shallowwaterhake
+species.name.sp9 = deepwaterhake
+species.name.sp300 = sphy
+species.name.sp301 = lphy
+species.name.sp302 = szoo
+species.name.sp303 = lzoo
 
 species.type.sp0 = focal
 species.type.sp1 = focal
@@ -40,28 +35,28 @@ species.type.sp6 = focal
 species.type.sp7 = focal
 species.type.sp8 = focal
 species.type.sp9 = focal
-species.type.sp10 = resource
-species.type.sp11 = resource
-species.type.sp12 = resource
-species.type.sp13 = resource
+species.type.sp300 = resource
+species.type.sp301 = resource
+species.type.sp302 = resource
+species.type.sp303 = resource
 
-fisheries.name.fsh0 = fishery.anchovy
-fisheries.name.fsh2 = fishery.shallowwaterhake
-fisheries.name.fsh3 = fishery.deepwaterhake
+fisheries.name.fsh1 = fishery.anchovy
+fisheries.name.fsh2 = fishery.sardine
+fisheries.name.fsh3 = fishery.redeye
 fisheries.name.fsh4 = fishery.horsemackerel
 fisheries.name.fsh5 = fishery.mesopelagic
-fisheries.name.fsh6 = fishery.redeye
-fisheries.name.fsh7 = fishery.sardine
-fisheries.name.fsh8 = fishery.silverkob
-fisheries.name.fsh9 = fishery.snoek
+fisheries.name.fsh6 = fishery.silverkob
+fisheries.name.fsh7 = fishery.snoek
+fisheries.name.fsh8 = fishery.shallowwaterhake
+fisheries.name.fsh9 = fishery.deepwaterhake
 
 simulation.ncpu = 1
 simulation.nsimulation = 1
 simulation.time.ndtperyear = 24
-simulation.time.nyear = 100
+simulation.time.nyear = 150
 
-simulation.nschool.sp0 = 24
-simulation.nschool.sp1 = 100
+simulation.nschool.sp0 = 100
+simulation.nschool.sp1 = 24
 simulation.nschool.sp2 = 24
 simulation.nschool.sp3 = 24
 simulation.nschool.sp4 = 24
@@ -79,75 +74,75 @@ grid.var.mask = mask
 
 # Resource configuration --------------------------------------------------
 
-species.file.sp10 = input/roms_climatological-sphy_benguela_15days_2000_2009.nc
-species.file.sp11 = input/roms_climatological-lphy_benguela_15days_2000_2009.nc
-species.file.sp12 = input/roms_climatological-szoo_benguela_15days_2000_2009.nc
-species.file.sp13 = input/roms_climatological-lzoo_benguela_15days_2000_2009.nc
+species.file.sp300 = input/roms_climatological-sphy_benguela_15days_2000_2009.nc
+species.file.sp301 = input/roms_climatological-lphy_benguela_15days_2000_2009.nc
+species.file.sp302 = input/roms_climatological-szoo_benguela_15days_2000_2009.nc
+species.file.sp303 = input/roms_climatological-lzoo_benguela_15days_2000_2009.nc
 
-species.biomass.nsteps.year.sp10 = 24
-species.biomass.nsteps.year.sp11 = 24
-species.biomass.nsteps.year.sp12 = 24
-species.biomass.nsteps.year.sp13 = 24
+species.biomass.nsteps.year.sp300 = 24
+species.biomass.nsteps.year.sp301 = 24
+species.biomass.nsteps.year.sp302 = 24
+species.biomass.nsteps.year.sp303 = 24
 
-species.accessibility2fish.sp10 = 0.026894718
-species.accessibility2fish.sp11 = 0.002977831
-species.accessibility2fish.sp12 = 0.014176891
-species.accessibility2fish.sp13 = 0.185446482
+species.accessibility2fish.sp300 = 0.026894718
+species.accessibility2fish.sp301 = 0.002977831
+species.accessibility2fish.sp302 = 0.014176891
+species.accessibility2fish.sp303 = 0.185446482
 
 # Resource sizes
-species.size.min.sp10 = 2e-04
-species.size.min.sp11 = 0.002
-species.size.min.sp12 = 0.002
-species.size.min.sp13 = 0.02
-species.size.max.sp10 = 0.002
-species.size.max.sp11 = 0.02
-species.size.max.sp12 = 0.02
-species.size.max.sp13 = 0.3
+species.size.min.sp300 = 2e-04
+species.size.min.sp301 = 0.002
+species.size.min.sp302 = 0.002
+species.size.min.sp303 = 0.02
+species.size.max.sp300 = 0.002
+species.size.max.sp301 = 0.02
+species.size.max.sp302 = 0.02
+species.size.max.sp303 = 0.3
 
 # Resource Trophic Level
-species.TL.sp10 = 1
-species.TL.sp11 = 1
-species.TL.sp12 = 2
-species.TL.sp13 = 2.5
+species.TL.sp300 = 1
+species.TL.sp301 = 1
+species.TL.sp302 = 2
+species.TL.sp303 = 2.5
 
 # Species configuration ---------------------------------------------------
 
 # Growth: von Bertalanffy growth model
-species.linf.sp0 = 14.8
-species.linf.sp1 = 1.84
-species.linf.sp2 = 270.6
-species.linf.sp3 = 219.4
+species.linf.sp0 = 1.84
+species.linf.sp1 = 14.8
+species.linf.sp2 = 26
+species.linf.sp3 = 30.1
 species.linf.sp4 = 54.5
 species.linf.sp5 = 7
-species.linf.sp6 = 30.1
-species.linf.sp7 = 26
-species.linf.sp8 = 116
-species.linf.sp9 = 115.3
+species.linf.sp6 = 116
+species.linf.sp7 = 115.3
+species.linf.sp8 = 270.6
+species.linf.sp9 = 219.4
 
-species.k.sp0 = 1.37
-species.k.sp1 = 1.682
-species.k.sp2 = 0.039
-species.k.sp3 = 0.049
+species.k.sp0 = 1.682
+species.k.sp1 = 1.37
+species.k.sp2 = 0.26
+species.k.sp3 = 0.71
 species.k.sp4 = 0.183
 species.k.sp5 = 1.66
-species.k.sp6 = 0.71
-species.k.sp7 = 0.26
-species.k.sp8 = 0.12
-species.k.sp9 = 0.294
+species.k.sp6 = 0.12
+species.k.sp7 = 0.294
+species.k.sp8 = 0.039
+species.k.sp9 = 0.049
 
-species.t0.sp0 = -0.03
-species.t0.sp1 = -0.198
-species.t0.sp2 = -0.73
-species.t0.sp3 = -0.914
+species.t0.sp0 = -0.198
+species.t0.sp1 = -0.03
+species.t0.sp2 = -1.5
+species.t0.sp3 = 0.28
 species.t0.sp4 = -0.65
 species.t0.sp5 = 0.06
-species.t0.sp6 = 0.28
-species.t0.sp7 = -1.5
-species.t0.sp8 = -1.47
-species.t0.sp9 = -0.1
+species.t0.sp6 = -1.47
+species.t0.sp7 = -0.1
+species.t0.sp8 = -0.73
+species.t0.sp9 = -0.914
 
-species.vonbertalanffy.threshold.age.sp0 = 1
-species.vonbertalanffy.threshold.age.sp1 = 0.17
+species.vonbertalanffy.threshold.age.sp0 = 0.17
+species.vonbertalanffy.threshold.age.sp1 = 1
 species.vonbertalanffy.threshold.age.sp2 = 1
 species.vonbertalanffy.threshold.age.sp3 = 1
 species.vonbertalanffy.threshold.age.sp4 = 1
@@ -157,61 +152,61 @@ species.vonbertalanffy.threshold.age.sp7 = 1
 species.vonbertalanffy.threshold.age.sp8 = 1
 species.vonbertalanffy.threshold.age.sp9 = 1
 
-species.length2weight.condition.factor.sp0 = 0.007
-species.length2weight.condition.factor.sp1 = 0.00738
-species.length2weight.condition.factor.sp2 = 0.00654
-species.length2weight.condition.factor.sp3 = 0.00785
+species.length2weight.condition.factor.sp0 = 0.00738
+species.length2weight.condition.factor.sp1 = 0.007
+species.length2weight.condition.factor.sp2 = 0.009
+species.length2weight.condition.factor.sp3 = 0.009
 species.length2weight.condition.factor.sp4 = 0.009
 species.length2weight.condition.factor.sp5 = 0.008
-species.length2weight.condition.factor.sp6 = 0.009
-species.length2weight.condition.factor.sp7 = 0.009
-species.length2weight.condition.factor.sp8 = 0.007
-species.length2weight.condition.factor.sp9 = 0.018
+species.length2weight.condition.factor.sp6 = 0.007
+species.length2weight.condition.factor.sp7 = 0.018
+species.length2weight.condition.factor.sp8 = 0.00654
+species.length2weight.condition.factor.sp9 = 0.00785
 
-species.length2weight.allometric.power.sp0 = 3
-species.length2weight.allometric.power.sp1 = 3.16
-species.length2weight.allometric.power.sp2 = 3.0425
-species.length2weight.allometric.power.sp3 = 2.9759
+species.length2weight.allometric.power.sp0 = 3.16
+species.length2weight.allometric.power.sp1 = 3
+species.length2weight.allometric.power.sp2 = 3
+species.length2weight.allometric.power.sp3 = 3
 species.length2weight.allometric.power.sp4 = 3
 species.length2weight.allometric.power.sp5 = 3
 species.length2weight.allometric.power.sp6 = 3
 species.length2weight.allometric.power.sp7 = 3
-species.length2weight.allometric.power.sp8 = 3
-species.length2weight.allometric.power.sp9 = 3
+species.length2weight.allometric.power.sp8 = 3.0425
+species.length2weight.allometric.power.sp9 = 2.9759
 
-species.lifespan.sp0 = 5
-species.lifespan.sp1 = 1
-species.lifespan.sp2 = 15
-species.lifespan.sp3 = 15
+species.lifespan.sp0 = 1
+species.lifespan.sp1 = 5
+species.lifespan.sp2 = 10
+species.lifespan.sp3 = 6
 species.lifespan.sp4 = 8
 species.lifespan.sp5 = 2
-species.lifespan.sp6 = 6
+species.lifespan.sp6 = 25
 species.lifespan.sp7 = 10
-species.lifespan.sp8 = 25
-species.lifespan.sp9 = 10
+species.lifespan.sp8 = 15
+species.lifespan.sp9 = 15
 
 # Reproduction
-species.relativefecundity.sp0 = 8000
-species.relativefecundity.sp1 = 42254
-species.relativefecundity.sp2 = 500
-species.relativefecundity.sp3 = 500
+species.relativefecundity.sp0 = 42254
+species.relativefecundity.sp1 = 8000
+species.relativefecundity.sp2 = 2400
+species.relativefecundity.sp3 = 750
 species.relativefecundity.sp4 = 250
 species.relativefecundity.sp5 = 646
-species.relativefecundity.sp6 = 750
-species.relativefecundity.sp7 = 2400
-species.relativefecundity.sp8 = 150
-species.relativefecundity.sp9 = 130
+species.relativefecundity.sp6 = 150
+species.relativefecundity.sp7 = 130
+species.relativefecundity.sp8 = 500
+species.relativefecundity.sp9 = 500
 
-reproduction.season.file.sp0 = input/reproduction/reproduction-seasonality-sp0.csv
-reproduction.season.file.sp1 = input/reproduction/reproduction-seasonality-sp1.csv
-reproduction.season.file.sp2 = input/reproduction/reproduction-seasonality-sp2.csv
-reproduction.season.file.sp3 = input/reproduction/reproduction-seasonality-sp3.csv
+reproduction.season.file.sp0 = input/reproduction/reproduction-seasonality-sp1.csv
+reproduction.season.file.sp1 = input/reproduction/reproduction-seasonality-sp0.csv
+reproduction.season.file.sp2 = input/reproduction/reproduction-seasonality-sp7.csv
+reproduction.season.file.sp3 = input/reproduction/reproduction-seasonality-sp6.csv
 reproduction.season.file.sp4 = input/reproduction/reproduction-seasonality-sp4.csv
 reproduction.season.file.sp5 = input/reproduction/reproduction-seasonality-sp5.csv
-reproduction.season.file.sp6 = input/reproduction/reproduction-seasonality-sp6.csv
-reproduction.season.file.sp7 = input/reproduction/reproduction-seasonality-sp7.csv
-reproduction.season.file.sp8 = input/reproduction/reproduction-seasonality-sp8.csv
-reproduction.season.file.sp9 = input/reproduction/reproduction-seasonality-sp9.csv
+reproduction.season.file.sp6 = input/reproduction/reproduction-seasonality-sp8.csv
+reproduction.season.file.sp7 = input/reproduction/reproduction-seasonality-sp9.csv
+reproduction.season.file.sp8 = input/reproduction/reproduction-seasonality-sp2.csv
+reproduction.season.file.sp9 = input/reproduction/reproduction-seasonality-sp3.csv
 
 species.egg.size.sp0 = 0.1
 species.egg.size.sp1 = 0.1
@@ -246,41 +241,41 @@ species.sexratio.sp7 = 0.5
 species.sexratio.sp8 = 0.5
 species.sexratio.sp9 = 0.5
 
-species.maturity.size.sp0 = 11.2
-species.maturity.size.sp1 = 1.05
-species.maturity.size.sp2 = 52
-species.maturity.size.sp3 = 42.1
+species.maturity.size.sp0 = 1.05
+species.maturity.size.sp1 = 11.2
+species.maturity.size.sp2 = 18
+species.maturity.size.sp3 = 12
 species.maturity.size.sp4 = 26.6
 species.maturity.size.sp5 = 3.7
-species.maturity.size.sp6 = 12
-species.maturity.size.sp7 = 18
-species.maturity.size.sp8 = 39.5
-species.maturity.size.sp9 = 73
+species.maturity.size.sp6 = 39.5
+species.maturity.size.sp7 = 73
+species.maturity.size.sp8 = 52
+species.maturity.size.sp9 = 42.1
 
 # Survival
 mortality.subdt = 10
 
-mortality.additional.rate.sp0 = 0.403
-mortality.additional.rate.sp1 = 0.1
-mortality.additional.rate.sp2 = 0.228
-mortality.additional.rate.sp3 = 0.174
+mortality.additional.rate.sp0 = 0.1
+mortality.additional.rate.sp1 = 0.403
+mortality.additional.rate.sp2 = 0.365
+mortality.additional.rate.sp3 = 0.208
 mortality.additional.rate.sp4 = 0.314
 mortality.additional.rate.sp5 = 0.226
-mortality.additional.rate.sp6 = 0.208
-mortality.additional.rate.sp7 = 0.365
+mortality.additional.rate.sp6 = 0.228
+mortality.additional.rate.sp7 = 0.132
 mortality.additional.rate.sp8 = 0.228
-mortality.additional.rate.sp9 = 0.132
+mortality.additional.rate.sp9 = 0.174
 
-mortality.additional.larva.rate.sp0 = 5.790887
-mortality.additional.larva.rate.sp1 = 5.004677
-mortality.additional.larva.rate.sp2 = 3.068959
-mortality.additional.larva.rate.sp3 = 3.903988
+mortality.additional.larva.rate.sp0 = 5.004677
+mortality.additional.larva.rate.sp1 = 5.790887
+mortality.additional.larva.rate.sp2 = 2.719504
+mortality.additional.larva.rate.sp3 = 5.206346
 mortality.additional.larva.rate.sp4 = 3.847284
 mortality.additional.larva.rate.sp5 = 4.358056
-mortality.additional.larva.rate.sp6 = 5.206346
-mortality.additional.larva.rate.sp7 = 2.719504
-mortality.additional.larva.rate.sp8 = 6.674349
-mortality.additional.larva.rate.sp9 = 9.55594
+mortality.additional.larva.rate.sp6 = 6.674349
+mortality.additional.larva.rate.sp7 = 9.55594
+mortality.additional.larva.rate.sp8 = 3.068959
+mortality.additional.larva.rate.sp9 = 3.903988
 
 mortality.starvation.rate.max.sp0 = 3
 mortality.starvation.rate.max.sp1 = 3
@@ -293,16 +288,16 @@ mortality.starvation.rate.max.sp7 = 3
 mortality.starvation.rate.max.sp8 = 3
 mortality.starvation.rate.max.sp9 = 3
 
-population.seeding.biomass.sp0 = 3888750
-population.seeding.biomass.sp1 = 3129213
-population.seeding.biomass.sp2 = 575361
-population.seeding.biomass.sp3 = 591907
+population.seeding.biomass.sp0 = 3129213
+population.seeding.biomass.sp1 = 3888750
+population.seeding.biomass.sp2 = 3029155
+population.seeding.biomass.sp3 = 1286364
 population.seeding.biomass.sp4 = 1138339
 population.seeding.biomass.sp5 = 1439984
-population.seeding.biomass.sp6 = 1286364
-population.seeding.biomass.sp7 = 3029155
-population.seeding.biomass.sp8 = 198865
-population.seeding.biomass.sp9 = 81054
+population.seeding.biomass.sp6 = 198865
+population.seeding.biomass.sp7 = 81054
+population.seeding.biomass.sp8 = 575361
+population.seeding.biomass.sp9 = 591907
 
 population.seeding.year = 30
 
@@ -324,26 +319,26 @@ predation.efficiency.critical.sp9 = 0.57
 
 predation.ingestion.rate.max.sp0 = 3.5
 predation.ingestion.rate.max.sp1 = 3.5
-predation.ingestion.rate.max.sp2 = 3.22
-predation.ingestion.rate.max.sp3 = 3.15
+predation.ingestion.rate.max.sp2 = 3.5
+predation.ingestion.rate.max.sp3 = 3.5
 predation.ingestion.rate.max.sp4 = 3.5
 predation.ingestion.rate.max.sp5 = 3.5
-predation.ingestion.rate.max.sp6 = 3.5
-predation.ingestion.rate.max.sp7 = 3.5
-predation.ingestion.rate.max.sp8 = 2.7
+predation.ingestion.rate.max.sp6 = 2.7
+predation.ingestion.rate.max.sp7 = 3.15
+predation.ingestion.rate.max.sp8 = 3.22
 predation.ingestion.rate.max.sp9 = 3.15
 
-predation.predprey.sizeratio.max.sp0 = 10, 5
-predation.predprey.sizeratio.min.sp0 = 100, 500
+predation.predprey.sizeratio.max.sp0 = 15, 5
+predation.predprey.sizeratio.min.sp0 = 300, 100
 
-predation.predprey.sizeratio.max.sp1 = 15, 5
-predation.predprey.sizeratio.min.sp1 = 300, 100
+predation.predprey.sizeratio.max.sp1 = 10, 5
+predation.predprey.sizeratio.min.sp1 = 100, 500
 
-predation.predprey.sizeratio.max.sp2 = 3.5, 1.8
-predation.predprey.sizeratio.min.sp2 = 50, 50
+predation.predprey.sizeratio.max.sp2 = 100, 200
+predation.predprey.sizeratio.min.sp2 = 200, 4000
 
-predation.predprey.sizeratio.max.sp3 = 3.5, 1.8
-predation.predprey.sizeratio.min.sp3 = 50, 50
+predation.predprey.sizeratio.max.sp3 = 10
+predation.predprey.sizeratio.min.sp3 = 100
 
 predation.predprey.sizeratio.max.sp4 = 10, 5
 predation.predprey.sizeratio.min.sp4 = 100, 100
@@ -351,29 +346,29 @@ predation.predprey.sizeratio.min.sp4 = 100, 100
 predation.predprey.sizeratio.max.sp5 = 2.5
 predation.predprey.sizeratio.min.sp5 = 100
 
-predation.predprey.sizeratio.max.sp6 = 10
-predation.predprey.sizeratio.min.sp6 = 100
+predation.predprey.sizeratio.max.sp6 = 3.5
+predation.predprey.sizeratio.min.sp6 = 70
 
-predation.predprey.sizeratio.max.sp7 = 100, 200
-predation.predprey.sizeratio.min.sp7 = 200, 4000
+predation.predprey.sizeratio.max.sp7 = 3.5
+predation.predprey.sizeratio.min.sp7 = 70
 
-predation.predprey.sizeratio.max.sp8 = 3.5
-predation.predprey.sizeratio.min.sp8 = 70
+predation.predprey.sizeratio.max.sp8 = 3.5, 1.8
+predation.predprey.sizeratio.min.sp8 = 50, 50
 
-predation.predprey.sizeratio.max.sp9 = 3.5
-predation.predprey.sizeratio.min.sp9 = 70
+predation.predprey.sizeratio.max.sp9 = 3.5, 1.8
+predation.predprey.sizeratio.min.sp9 = 50, 50
 
 predation.predprey.stage.structure = size
-predation.predprey.stage.threshold.sp0 = 8
-predation.predprey.stage.threshold.sp1 = 0.6
-predation.predprey.stage.threshold.sp2 = 27
-predation.predprey.stage.threshold.sp3 = 29
+predation.predprey.stage.threshold.sp0 = 0.6
+predation.predprey.stage.threshold.sp1 = 8
+predation.predprey.stage.threshold.sp2 = 10
+predation.predprey.stage.threshold.sp3 = NULL
 predation.predprey.stage.threshold.sp4 = 10
 predation.predprey.stage.threshold.sp5 = NULL
 predation.predprey.stage.threshold.sp6 = NULL
-predation.predprey.stage.threshold.sp7 = 10
-predation.predprey.stage.threshold.sp8 = NULL
-predation.predprey.stage.threshold.sp9 = NULL
+predation.predprey.stage.threshold.sp7 = NULL
+predation.predprey.stage.threshold.sp8 = 27
+predation.predprey.stage.threshold.sp9 = 29
 
 # Movement configuration --------------------------------------------------
 
@@ -593,55 +588,56 @@ movement.file.map26 = input/maps/snoek.nc
 
 # Fisheries configuration -------------------------------------------------
 
+simulation.fishing.mortality.enabled = TRUE
 fisheries.movement.netcdf.enabled = TRUE
 
 fisheries.catchability.file = input/fisheries/catchability.csv
 fisheries.discards.file = input/fisheries/discards.csv
 
-# Fishery 0 (anchovy)
-fisheries.rate.base.log.enabled.fsh0 = FALSE
-fisheries.rate.base.fsh0 = 0.1419102
-fisheries.period.number.fsh0 = 1
-fisheries.period.start.fsh0 = 0
-fisheries.rate.byperiod.fsh0 = 1
-fisheries.seasonality.file.fsh0 = input/fisheries/fishing-seasonality-anchovy.csv
-fisheries.selectivity.type.fsh0 = 0
-fisheries.selectivity.l50.fsh0 = 8.7
-fisheries.selectivity.l75.fsh0 = 8.8
+# Fishery 1 (anchovy)
+fisheries.rate.base.log.enabled.fsh1 = FALSE
+fisheries.rate.base.fsh1 = 0.1419102
+fisheries.period.number.fsh1 = 1
+fisheries.period.start.fsh1 = 0
+fisheries.rate.byperiod.fsh1 = 1
+fisheries.seasonality.file.fsh1 = input/fisheries/fishing-seasonality-anchovy.csv
+fisheries.selectivity.type.fsh1 = 0
+fisheries.selectivity.l50.fsh1 = 8.7
+fisheries.selectivity.l75.fsh1 = 8.8
 
-fisheries.movement.fishery.map0 = fishery.anchovy
-fisheries.movement.variable.map0 = area
-fisheries.movement.nsteps.year.map0 = 24
-fisheries.movement.file.map0 = input/fisheries/mapFleets.nc
+fisheries.movement.fishery.map1 = fishery.anchovy
+fisheries.movement.variable.map1 = area
+fisheries.movement.nsteps.year.map1 = 24
+fisheries.movement.file.map1 = input/fisheries/mapFleets.nc
 
-# Fishery 2 (shallowwaterhake)
+# Fishery 2 (sardine)
 fisheries.rate.base.log.enabled.fsh2 = FALSE
-fisheries.rate.base.fsh2 = 0.3339702
+fisheries.rate.base.fsh2 = 0.190335
 fisheries.period.number.fsh2 = 1
 fisheries.period.start.fsh2 = 0
 fisheries.rate.byperiod.fsh2 = 1
-fisheries.seasonality.file.fsh2 = input/fisheries/fishing-seasonality-shallow-water-hake.csv
+fisheries.seasonality.file.fsh2 = input/fisheries/fishing-seasonality-sardine.csv
 fisheries.selectivity.type.fsh2 = 0
-fisheries.selectivity.l50.fsh2 = 32
-fisheries.selectivity.l75.fsh2 = 32.3
+fisheries.selectivity.l50.fsh2 = 12.4
+fisheries.selectivity.l75.fsh2 = 12.5
 
-fisheries.movement.fishery.map2 = fishery.shallowwaterhake
+fisheries.movement.fishery.map2 = fishery.sardine
 fisheries.movement.variable.map2 = area
 fisheries.movement.nsteps.year.map2 = 24
 fisheries.movement.file.map2 = input/fisheries/mapFleets.nc
 
-# Fishery 3 (deepwaterhake)
+# Fishery 3 (redeye)
 fisheries.rate.base.log.enabled.fsh3 = FALSE
-fisheries.rate.base.fsh3 = 0.3566318
+fisheries.rate.base.fsh3 = 0.05010653
 fisheries.period.number.fsh3 = 1
 fisheries.period.start.fsh3 = 0
 fisheries.rate.byperiod.fsh3 = 1
-fisheries.seasonality.file.fsh3 = input/fisheries/fishing-seasonality-deep-water-hake.csv
+fisheries.seasonality.file.fsh3 = input/fisheries/fishing-seasonality-redeye.csv
 fisheries.selectivity.type.fsh3 = 0
-fisheries.selectivity.l50.fsh3 = 28.3
-fisheries.selectivity.l75.fsh3 = 28.6
+fisheries.selectivity.l50.fsh3 = 12
+fisheries.selectivity.l75.fsh3 = 12.1
 
-fisheries.movement.fishery.map3 = fishery.deepwaterhake
+fisheries.movement.fishery.map3 = fishery.redeye
 fisheries.movement.variable.map3 = area
 fisheries.movement.nsteps.year.map3 = 24
 fisheries.movement.file.map3 = input/fisheries/mapFleets.nc
@@ -678,66 +674,66 @@ fisheries.movement.variable.map5 = area
 fisheries.movement.nsteps.year.map5 = 24
 fisheries.movement.file.map5 = input/fisheries/mapFleets.nc
 
-# Fishery 6 (redeye)
+# Fishery 6 (silverkob)
 fisheries.rate.base.log.enabled.fsh6 = FALSE
-fisheries.rate.base.fsh6 = 0.05010653
+fisheries.rate.base.fsh6 = 0.1381662
 fisheries.period.number.fsh6 = 1
 fisheries.period.start.fsh6 = 0
 fisheries.rate.byperiod.fsh6 = 1
-fisheries.seasonality.file.fsh6 = input/fisheries/fishing-seasonality-redeye.csv
+fisheries.seasonality.file.fsh6 = input/fisheries/fishing-seasonality-silver-kob.csv
 fisheries.selectivity.type.fsh6 = 0
-fisheries.selectivity.l50.fsh6 = 12
-fisheries.selectivity.l75.fsh6 = 12.1
+fisheries.selectivity.l50.fsh6 = 29.8
+fisheries.selectivity.l75.fsh6 = 30.1
 
-fisheries.movement.fishery.map6 = fishery.redeye
+fisheries.movement.fishery.map6 = fishery.silverkob
 fisheries.movement.variable.map6 = area
 fisheries.movement.nsteps.year.map6 = 24
 fisheries.movement.file.map6 = input/fisheries/mapFleets.nc
 
-# Fishery 7 (sardine)
+# Fishery 7 (snoek)
 fisheries.rate.base.log.enabled.fsh7 = FALSE
-fisheries.rate.base.fsh7 = 0.190335
+fisheries.rate.base.fsh7 = 0.2289438
 fisheries.period.number.fsh7 = 1
 fisheries.period.start.fsh7 = 0
 fisheries.rate.byperiod.fsh7 = 1
-fisheries.seasonality.file.fsh7 = input/fisheries/fishing-seasonality-sardine.csv
+fisheries.seasonality.file.fsh7 = input/fisheries/fishing-seasonality-snoek.csv
 fisheries.selectivity.type.fsh7 = 0
-fisheries.selectivity.l50.fsh7 = 12.4
-fisheries.selectivity.l75.fsh7 = 12.5
+fisheries.selectivity.l50.fsh7 = 69
+fisheries.selectivity.l75.fsh7 = 69.7
 
-fisheries.movement.fishery.map7 = fishery.sardine
+fisheries.movement.fishery.map7 = fishery.snoek
 fisheries.movement.variable.map7 = area
 fisheries.movement.nsteps.year.map7 = 24
 fisheries.movement.file.map7 = input/fisheries/mapFleets.nc
 
-# Fishery 8 (silverkob)
+# Fishery 8 (shallowwaterhake)
 fisheries.rate.base.log.enabled.fsh8 = FALSE
-fisheries.rate.base.fsh8 = 0.1381662
+fisheries.rate.base.fsh8 = 0.3339702
 fisheries.period.number.fsh8 = 1
 fisheries.period.start.fsh8 = 0
 fisheries.rate.byperiod.fsh8 = 1
-fisheries.seasonality.file.fsh8 = input/fisheries/fishing-seasonality-silver-kob.csv
+fisheries.seasonality.file.fsh8 = input/fisheries/fishing-seasonality-shallow-water-hake.csv
 fisheries.selectivity.type.fsh8 = 0
-fisheries.selectivity.l50.fsh8 = 29.8
-fisheries.selectivity.l75.fsh8 = 30.1
+fisheries.selectivity.l50.fsh8 = 32
+fisheries.selectivity.l75.fsh8 = 32.3
 
-fisheries.movement.fishery.map8 = fishery.silverkob
+fisheries.movement.fishery.map8 = fishery.shallowwaterhake
 fisheries.movement.variable.map8 = area
 fisheries.movement.nsteps.year.map8 = 24
 fisheries.movement.file.map8 = input/fisheries/mapFleets.nc
 
-# Fishery 9 (snoek)
+# Fishery 9 (deepwaterhake)
 fisheries.rate.base.log.enabled.fsh9 = FALSE
-fisheries.rate.base.fsh9 = 0.2289438
+fisheries.rate.base.fsh9 = 0.3566318
 fisheries.period.number.fsh9 = 1
 fisheries.period.start.fsh9 = 0
 fisheries.rate.byperiod.fsh9 = 1
-fisheries.seasonality.file.fsh9 = input/fisheries/fishing-seasonality-snoek.csv
+fisheries.seasonality.file.fsh9 = input/fisheries/fishing-seasonality-deep-water-hake.csv
 fisheries.selectivity.type.fsh9 = 0
-fisheries.selectivity.l50.fsh9 = 69
-fisheries.selectivity.l75.fsh9 = 69.7
+fisheries.selectivity.l50.fsh9 = 28.3
+fisheries.selectivity.l75.fsh9 = 28.6
 
-fisheries.movement.fishery.map9 = fishery.snoek
+fisheries.movement.fishery.map9 = fishery.deepwaterhake
 fisheries.movement.variable.map9 = area
 fisheries.movement.nsteps.year.map9 = 24
 fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
@@ -745,7 +741,7 @@ fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 # Output configuration ----------------------------------------------------
 
 output.start.year = 60
-output.restart.enabled = FALSE
+output.restart.enabled = TRUE
 output.file.prefix  = ben
 output.step0.include = FALSE
 output.recordfrequency.ndt = 2
@@ -838,12 +834,134 @@ output.spatialegg.enabled = FALSE
 output.spatialMstarv.enabled = FALSE
 output.spatialMpred.enabled = FALSE
 
+# Output distribution configuration
+output.distrib.bysize.min.sp0 = 0
+output.distrib.bysize.max.sp0 = 3
+output.distrib.bysize.incr.sp0 = 0.05
+
+output.distrib.byage.min.sp0 = 0
+output.distrib.byage.max.sp0 = 1
+output.distrib.byage.incr.sp0 = 0.1
+
+output.distrib.bytl.min.sp0 = 0
+output.distrib.bytl.max.sp0 = 5
+output.distrib.bytl.incr.sp0 = 0.25
+
+output.distrib.bysize.min.sp1 = 0
+output.distrib.bysize.max.sp1 = 18
+output.distrib.bysize.incr.sp1 = 0.5
+
+output.distrib.byage.min.sp1 = 0
+output.distrib.byage.max.sp1 = 5
+output.distrib.byage.incr.sp1 = 0.5
+
+output.distrib.bytl.min.sp1 = 0
+output.distrib.bytl.max.sp1 = 5
+output.distrib.bytl.incr.sp1 = 0.25
+
+output.distrib.bysize.min.sp2 = 0
+output.distrib.bysize.max.sp2 = 32
+output.distrib.bysize.incr.sp2 = 0.5
+
+output.distrib.byage.min.sp2 = 0
+output.distrib.byage.max.sp2 = 10
+output.distrib.byage.incr.sp2 = 1
+
+output.distrib.bytl.min.sp2 = 0
+output.distrib.bytl.max.sp2 = 5
+output.distrib.bytl.incr.sp2 = 0.25
+
+output.distrib.bysize.min.sp3 = 0
+output.distrib.bysize.max.sp3 = 37
+output.distrib.bysize.incr.sp3 = 1
+
+output.distrib.byage.min.sp3 = 0
+output.distrib.byage.max.sp3 = 6
+output.distrib.byage.incr.sp3 = 0.5
+
+output.distrib.bytl.min.sp3 = 0
+output.distrib.bytl.max.sp3 = 5
+output.distrib.bytl.incr.sp3 = 0.25
+
+output.distrib.bysize.min.sp4 = 0
+output.distrib.bysize.max.sp4 = 66
+output.distrib.bysize.incr.sp4 = 1
+
+output.distrib.byage.min.sp4 = 0
+output.distrib.byage.max.sp4 = 8
+output.distrib.byage.incr.sp4 = 1
+
+output.distrib.bytl.min.sp4 = 0
+output.distrib.bytl.max.sp4 = 5
+output.distrib.bytl.incr.sp4 = 0.25
+
+output.distrib.bysize.min.sp5 = 0
+output.distrib.bysize.max.sp5 = 9
+output.distrib.bysize.incr.sp5 = 0.2
+
+output.distrib.byage.min.sp5 = 0
+output.distrib.byage.max.sp5 = 2
+output.distrib.byage.incr.sp5 = 0.2
+
+output.distrib.bytl.min.sp5 = 0
+output.distrib.bytl.max.sp5 = 5
+output.distrib.bytl.incr.sp5 = 0.25
+
+output.distrib.bysize.min.sp6 = 0
+output.distrib.bysize.max.sp6 = 140
+output.distrib.bysize.incr.sp6 = 2
+
+output.distrib.byage.min.sp6 = 0
+output.distrib.byage.max.sp6 = 25
+output.distrib.byage.incr.sp6 = 1
+
+output.distrib.bytl.min.sp6 = 0
+output.distrib.bytl.max.sp6 = 5
+output.distrib.bytl.incr.sp6 = 0.25
+
+output.distrib.bysize.min.sp7 = 0
+output.distrib.bysize.max.sp7 = 139
+output.distrib.bysize.incr.sp7 = 2
+
+output.distrib.byage.min.sp7 = 0
+output.distrib.byage.max.sp7 = 10
+output.distrib.byage.incr.sp7 = 1
+
+output.distrib.bytl.min.sp7 = 0
+output.distrib.bytl.max.sp7 = 5
+output.distrib.bytl.incr.sp7 = 0.25
+
+output.distrib.bysize.min.sp8 = 0
+output.distrib.bysize.max.sp8 = 325
+output.distrib.bysize.incr.sp8 = 5
+
+output.distrib.byage.min.sp8 = 0
+output.distrib.byage.max.sp8 = 15
+output.distrib.byage.incr.sp8 = 1
+
+output.distrib.bytl.min.sp8 = 0
+output.distrib.bytl.max.sp8 = 5
+output.distrib.bytl.incr.sp8 = 0.25
+
+output.distrib.bysize.min.sp9 = 0
+output.distrib.bysize.max.sp9 = 264
+output.distrib.bysize.incr.sp9 = 5
+
+output.distrib.byage.min.sp9 = 0
+output.distrib.byage.max.sp9 = 15
+output.distrib.byage.incr.sp9 = 1
+
+output.distrib.bytl.min.sp9 = 0
+output.distrib.bytl.max.sp9 = 5
+output.distrib.bytl.incr.sp9 = 0.25
+
 # Advanced parameters -----------------------------------------------------
 
 osmose.version = 4.3.3
 
 # Simulation restart parameters
 simulation.restart.recordfrequency.ndt = 24
+output.restart.spinup = 90
 population.seeding.year.max = 30
 
 ltl.java.classname = fr.ird.osmose.ltl.LTLFastForcing
@@ -852,3 +970,7 @@ ltl.java.classname = fr.ird.osmose.ltl.LTLFastForcing
 simulation.bioen.enabled = FALSE
 simulation.genetic.enabled = FALSE
 simulation.incoming.flux.enabled = TRUE
+
+movement.randomseed.fixed = FALSE
+reproduction.randomseed.fixed = FALSE
+stochastic.mortality.seed  = 10
