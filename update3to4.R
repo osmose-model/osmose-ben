@@ -10,13 +10,14 @@ base     = "osmose-ben_v4_devel"
 cfg      = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new  = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
 
-out_file = "osmose-ben.R"
+out_file = "osmose-ben_reference.R"
+map_dir = "maps" # always relative to 'input' folder
 
-nc_fsh  = TRUE
-test_mov = FALSE
-map_dir = "maps"
-
+plk_start = 300
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
+sp_reorder = c(sp0 = "euphausiids", sp1 = "anchovy", sp2 = "sardine", sp3 = "redeye",
+               sp4 = "horsemackerel", sp5 = "mesopelagic", sp6 = "silverkob",
+               sp7 = "snoek", sp8 = "shallowwaterhake", sp9 = "deepwaterhake")
 
 # start
 output = file.path(base, out_file)
@@ -39,6 +40,26 @@ cat("# Setting the model -------------------------------------------------------
 
 plk = .getPar(ben, "plankton.name")
 spp = .getPar(ben, "species.name")
+
+# reordering species
+ind = match(spp, sp_reorder)
+if(any(is.na(ind))) {
+  xsp = paste(unlist(spp)[is.na(ind)], collapse=", ")
+  message(sprintf("Incorrect species names for reordering (missing: %s)", xsp))
+}
+
+rep = sprintf(".__xxsp%d", ind - 1)
+nm = names(ben)
+for(i in seq_along(spp)-1) {
+  nm = gsub(x=nm, pattern=sprintf("\\.sp%d$", i), replacement = rep[i+1])
+}
+
+names(ben) = gsub(x=nm, pattern = "__xx", replacement = "")
+ben = ben[order(names(ben))]
+# end of reordering
+
+spp = .getPar(ben, "species.name")
+
 fsh =  .getPar(ben, "mortality.fishing.rate.sp")
 
 if(exists("plk_rename")) {
@@ -49,22 +70,24 @@ nspp = .getPar(ben, "nspecies")
 nplk = length(plk)
 nfsh = sum(fsh>0)
 
+
 out1 = list()
 
 out1[["simulation.nresource"]] = nplk
 out1[["simulation.nspecies"]] = nspp
 out1[["simulation.nfisheries"]] = nfsh
 out1[["fisheries.enabled"]] = TRUE
-out1[["fisheries.check.enabled"]] = TRUE
+out1[["fisheries.check.enabled"]] = FALSE
 
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 all_sp = as.list(tolower(c(spp, plk)))
-names(all_sp) = sprintf("species.name.sp%d", seq_len(nspp + nplk) - 1)
+ind = c(seq_len(nspp) - 1, plk_start + seq_len(nplk) - 1)
+names(all_sp) = sprintf("species.name.sp%d", ind)
 write_osmose(as.matrix(all_sp), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 all_type = as.list(c(rep("focal", nspp), rep("resource", nplk)))
-names(all_type) = sprintf("species.type.sp%d", seq_len(nspp + nplk) - 1)
+names(all_type) = sprintf("species.type.sp%d", ind)
 write_osmose(as.matrix(all_type), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 fsh_name = paste("fishery.", spp, sep="")
@@ -77,6 +100,7 @@ sim0 = .getPar(sim, "nschool", invert=TRUE)
 sim0 = .getPar(sim0, "nspecies", invert=TRUE)
 sim0 = .getPar(sim0, "nplankton", invert=TRUE)
 sim0[["simulation.nsimulation"]] = 1
+sim0[["simulation.time.nyear"]] = 5*.getPar(ben, "population.seeding.year.max")
 
 sim1 = .getPar(sim, "nschool")
 
@@ -306,7 +330,7 @@ for(ipar in pars) {
   write_osmose(as.matrix(.getPar(ben, ipar)), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
 
-out1 = update_maps(input=cfg, output=file.path(base, "input", map_dir), conf=output, sep = ";", test=test_mov)
+out1 = update_maps(input=cfg, output=file.path(base, "input", map_dir), conf=output, sep = ";")
 
 for(i in seq_along(out1)) {
   write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
@@ -319,7 +343,8 @@ for(i in seq_along(out1)) {
 cat("\n# Fisheries configuration -------------------------------------------------\n", file=output, append = TRUE)
 
 out1 = list()
-out1[["fisheries.movement.netcdf.enabled"]] = nc_fsh
+out1[["simulation.fishing.mortality.enabled"]] = TRUE
+out1[["fisheries.movement.netcdf.enabled"]] = TRUE
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 fsh.dir = file.path(base, "input", "fisheries")
@@ -399,7 +424,7 @@ for(i in seq_along(fsh)) {
   out1[[sprintf("fisheries.selectivity.l75.fsh%d", i-1)]] = round(1.01*.getPar(rec, sp=i-1), 1)
   write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
-  if(isTRUE(nc_fsh)) {
+  if(TRUE) {
     out1 = list()
     out1[[sprintf("fisheries.movement.fishery.map%d", i-1)]]  = paste("fishery", spp[[i]], sep=".")
     out1[[sprintf("fisheries.movement.variable.map%d", i-1)]] = "area"
@@ -427,7 +452,7 @@ cat("\n# Output configuration --------------------------------------------------
 # keep main ones
 out1 = list()
 out1[["output.start.year"]] = 2*.getPar(ben, "population.seeding.year.max")
-out1[["output.restart.enabled"]] = FALSE
+out1[["output.restart.enabled"]] = TRUE
 out1[["output.file.prefix "]] = tolower(.getPar(ben, "output.file.prefix"))
 out1[["output.step0.include"]] = FALSE
 out1[["output.recordfrequency.ndt"]] = .getPar(ben, "simulation.time.ndt")/12
@@ -548,6 +573,54 @@ out[["output.spatialMstarv.enabled"]] = FALSE
 out[["output.spatialMpred.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+cat("\n# Output distribution configuration", file=output, append = TRUE)
+
+.getDistributionConfig = function(conf, sp, type, n) {
+
+  .getIncrement = function(n, x) {
+    int = c(0.1, 0.02, 0.025, 0.05, 0.1, 0.2, 0.25, 0.5, 1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000)
+    out = x/int
+    out = int[which.min(abs(out-n))]
+    return(out)
+  }
+
+  type = tolower(type)
+
+  x = switch(type,
+             "size" = ceiling(1.2*.getPar(.getPar(ben, sp=sp), "linf")),
+             "age"  = ceiling(.getPar(.getPar(ben, sp=sp), "lifespan")),
+             "tl"   = 5)
+
+  if(missing(n)) {
+    n = switch(type,
+               "size" = 50,
+               "age"  = 10,
+               "tl"   = 20)
+  }
+
+  incr = .getIncrement(x=x, n=n)
+
+  if(type=="age") incr = min(incr, 1) # less than one year only
+
+  patt = c("output.distrib.by%s.min.sp%d", "output.distrib.by%s.max.sp%d", "output.distrib.by%s.incr.sp%d")
+  out = setNames(list(0, x, incr), nm = sprintf(patt, type, sp))
+  return(out)
+
+}
+
+for(sp in seq_along(spp)-1) {
+
+  out1 = .getDistributionConfig(conf=ben, sp=sp, type="size")
+  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+  out1 = .getDistributionConfig(conf=ben, sp=sp, type="age")
+  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+  out1 = .getDistributionConfig(conf=ben, sp=sp, type="TL")
+  write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+}
+
 
 
 # Advanced parameters -----------------------------------------------------
@@ -562,6 +635,7 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 cat("\n# Simulation restart parameters", file=output, append = TRUE)
 out = list()
 out[["simulation.restart.recordfrequency.ndt"]] = 24
+out[["output.restart.spinup"]] = 3*.getPar(ben, "population.seeding.year.max")
 out[["population.initialization.file"]] = NULL
 out[["population.seeding.year.max"]] = .getPar(ben, "population.seeding.year.max")
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
@@ -580,7 +654,6 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 out = list()
 out[["movement.randomseed.fixed"]] = FALSE
 out[["reproduction.randomseed.fixed"]] = FALSE
-out[["simulation.fishing.mortality.enabled"]] = TRUE
 out[["stochastic.mortality.seed "]] = 10
 
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
