@@ -31,6 +31,10 @@ cat("# OSMOSE-BEN MAIN CONFIGURATION FILE\n", file=output)
 cat("# Benguela Upwelling Ecosystem - South Africa\n", file=output, append = TRUE)
 cat("# OSMOSE version 4.3.2\n\n", file=output, append = TRUE)
 
+
+# Setting the model -------------------------------------------------------
+
+
 cat("# Setting the model -------------------------------------------------------\n", file=output, append = TRUE)
 
 plk = .getPar(ben, "plankton.name")
@@ -110,6 +114,9 @@ out1[["grid.var.mask"]]       = "mask"
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 
+# Resource configuration --------------------------------------------------
+
+
 cat("\n# Resource configuration --------------------------------------------------\n", file=output, append = TRUE)
 
 ltl_file = .getPar(ben, "ltl.netcdf.file")
@@ -151,6 +158,9 @@ cat("\n# Resource Trophic Level", file=output, append = TRUE)
 out1 = .getPar(ben, "plankton.tl")
 names(out1) = gsub(names(plknames), pattern="name", replacement="TL")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+
+# Species configuration ---------------------------------------------------
 
 cat("\n# Species configuration ---------------------------------------------------\n", file=output, append = TRUE)
 
@@ -229,6 +239,9 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 out1 = list(population.seeding.year=.getPar(ben, "population.seeding.year"))
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+
+# Predation configuration -------------------------------------------------
+
 cat("\n# Predation configuration -------------------------------------------------\n", file=output, append = TRUE)
 
 acc_file = .getPar(ben, "predation.accessibility.file")
@@ -275,6 +288,9 @@ for(i in seq_len(nspp)-1) {
 out1 = .getPar(ben, "predation.predPrey.stage")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+
+# Movement configuration --------------------------------------------------
+
 cat("\n# Movement configuration --------------------------------------------------\n", file=output, append = TRUE)
 
 suppressWarnings(dir.create(file.path(base, "input", map_dir), recursive = TRUE))
@@ -295,6 +311,10 @@ out1 = update_maps(input=cfg, output=file.path(base, "input", map_dir), conf=out
 for(i in seq_along(out1)) {
   write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
+
+
+# Fisheries configuration -------------------------------------------------
+
 
 cat("\n# Fisheries configuration -------------------------------------------------\n", file=output, append = TRUE)
 
@@ -397,6 +417,9 @@ for(i in seq_along(fsh)) {
   }
 
 }
+
+
+# Output configuration ----------------------------------------------------
 
 
 cat("\n# Output configuration ----------------------------------------------------\n", file=output, append = TRUE)
@@ -525,6 +548,11 @@ out[["output.spatialMstarv.enabled"]] = FALSE
 out[["output.spatialMpred.enabled"]] = FALSE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+
+
+# Advanced parameters -----------------------------------------------------
+
+
 cat("\n# Advanced parameters -----------------------------------------------------\n", file=output, append = TRUE)
 
 out = list()
@@ -548,6 +576,15 @@ out[["simulation.bioen.enabled"]] = FALSE
 out[["simulation.genetic.enabled"]] = FALSE
 out[["simulation.incoming.flux.enabled"]] = TRUE
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+out = list()
+out[["movement.randomseed.fixed"]] = FALSE
+out[["reproduction.randomseed.fixed"]] = FALSE
+out[["simulation.fishing.mortality.enabled"]] = TRUE
+out[["stochastic.mortality.seed "]] = 10
+
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
 
 cat("Update complete.")
 
