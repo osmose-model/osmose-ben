@@ -8,7 +8,7 @@ simulation.nresource = 4
 simulation.nspecies = 10
 simulation.nfisheries = 9
 fisheries.enabled = TRUE
-fisheries.check.enabled = TRUE
+fisheries.check.enabled = FALSE
 
 species.name.sp0 = euphausiids
 species.name.sp1 = anchovy
