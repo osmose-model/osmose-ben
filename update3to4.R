@@ -6,7 +6,7 @@ library(nctools)
 library(kali)
 
 # manual inputs
-base     = "osmose-ben_v4_devel"
+base     = "osmose-ben_v4.3_Florance"
 cfg      = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new  = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
 
@@ -79,7 +79,7 @@ out1[["simulation.nfisheries"]] = nfsh
 out1[["fisheries.enabled"]] = TRUE
 out1[["fisheries.check.enabled"]] = FALSE
 
-write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+write_osmose(x=as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 all_sp = as.list(tolower(c(spp, plk)))
 ind = c(seq_len(nspp) - 1, plk_start + seq_len(nplk) - 1)
