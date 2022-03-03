@@ -48,3 +48,6 @@ osmose-ben_v4_devel/output/
 
 # log files
 *.log
+
+# sandbox
+sandbox/
