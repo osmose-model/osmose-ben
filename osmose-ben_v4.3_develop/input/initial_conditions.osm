@@ -1,0 +1,4 @@
+# OSMOSE initialization configuration (created Thu Mar 03 20:04:23 2022)
+# Do not edit by hand.
+
+population.initialization.file = ben-initial_conditions.nc
