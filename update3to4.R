@@ -9,9 +9,7 @@ library(kali)
 base     = "osmose-ben_v4.3_Florance"
 cfg      = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
 ltl_new  = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
-
-out_file = "osmose-ben_reference.R"
-map_dir = "maps" # always relative to 'input' folder
+model    = "ben"
 
 plk_start = 300
 plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
@@ -19,16 +17,21 @@ sp_reorder = c(sp0 = "euphausiids", sp1 = "anchovy", sp2 = "sardine", sp3 = "red
                sp4 = "horsemackerel", sp5 = "mesopelagic", sp6 = "silverkob",
                sp7 = "snoek", sp8 = "shallowwaterhake", sp9 = "deepwaterhake")
 
-# start
+
+# Start of the updating code ----------------------------------------------
+
+for(seeding in c(TRUE, FALSE)) {
+
+out_file = sprintf(ifelse(seeding, "osmose-%s_seeding.R", "osmose-%s.R"), model)
+
 output = file.path(base, out_file)
 
-.readConfiguration = osmose.extras:::.readConfiguration
-.getPar = osmose.extras:::.getPar
-
 ben = .readConfiguration(cfg)
+ben = .getPar(ben, par="osmose.configuration", invert = TRUE)
+
 bio = .getPar(ben, par="species.")
 
-cat("# OSMOSE-BEN MAIN CONFIGURATION FILE\n", file=output)
+cat(sprintf("# OSMOSE-%s MAIN CONFIGURATION FILE\n", toupper(model)), file=output)
 cat("# Benguela Upwelling Ecosystem - South Africa\n", file=output, append = TRUE)
 cat("# OSMOSE version 4.3.2\n\n", file=output, append = TRUE)
 
@@ -100,7 +103,7 @@ sim0 = .getPar(sim, "nschool", invert=TRUE)
 sim0 = .getPar(sim0, "nspecies", invert=TRUE)
 sim0 = .getPar(sim0, "nplankton", invert=TRUE)
 sim0[["simulation.nsimulation"]] = 1
-sim0[["simulation.time.nyear"]] = 5*.getPar(ben, "population.seeding.year.max")
+sim0[["simulation.time.nyear"]] = ifelse(seeding, 5*.getPar(ben, "population.seeding.year.max"), 10)
 
 sim1 = .getPar(sim, "nschool")
 
@@ -257,12 +260,6 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 out1 = .getPar(ben, "mortality.starvation.rate")
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
-out1 = .getPar(ben, "population.seeding.biomass")
-write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
-
-out1 = list(population.seeding.year=.getPar(ben, "population.seeding.year"))
-write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
-
 
 # Predation configuration -------------------------------------------------
 
@@ -317,7 +314,7 @@ write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep="
 
 cat("\n# Movement configuration --------------------------------------------------\n", file=output, append = TRUE)
 
-suppressWarnings(dir.create(file.path(base, "input", map_dir), recursive = TRUE))
+suppressWarnings(dir.create(file.path(base, "input", "maps"), recursive = TRUE))
 
 out1 = list()
 out1[["movement.checks.enabled"]] = FALSE
@@ -330,7 +327,7 @@ for(ipar in pars) {
   write_osmose(as.matrix(.getPar(ben, ipar)), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 }
 
-out1 = update_maps(input=cfg, output=file.path(base, "input", map_dir), conf=output, sep = ";")
+out1 = update_maps(input=cfg, output=file.path(base, "input", "maps"), conf=output, sep = ";")
 
 for(i in seq_along(out1)) {
   write_osmose(as.matrix(out1[[i]]), file=output, append=TRUE, col.names = FALSE, sep=" = ")
@@ -451,11 +448,11 @@ cat("\n# Output configuration --------------------------------------------------
 
 # keep main ones
 out1 = list()
-out1[["output.start.year"]] = 2*.getPar(ben, "population.seeding.year.max")
-out1[["output.restart.enabled"]] = TRUE
-out1[["output.file.prefix "]] = tolower(.getPar(ben, "output.file.prefix"))
+out1[["output.start.year"]] = ifelse(seeding, 2*.getPar(ben, "population.seeding.year.max"), 0)
+out1[["output.restart.enabled"]] = seeding
+out1[["output.file.prefix "]] = tolower(model)
 out1[["output.step0.include"]] = FALSE
-out1[["output.recordfrequency.ndt"]] = .getPar(ben, "simulation.time.ndt")/12
+out1[["output.recordfrequency.ndt"]] = .getPar(ben, "simulation.time.ndt")/12 # monthly
 out1[["output.cutoff.enabled"]] = FALSE
 out1[["output.fishery.enabled"]] = TRUE
 write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
@@ -622,6 +619,24 @@ for(sp in seq_along(spp)-1) {
 }
 
 
+# Model initialization ----------------------------------------------------
+
+cat("\n# Model initialization ----------------------------------------------------\n", file=output, append = TRUE)
+
+inifile = file.path("input", "initial_conditions.osm")
+if(seeding) inifile = NULL
+
+out = list()
+out[["population.seeding.year.max"]] = ifelse(seeding, .getPar(ben, "population.seeding.year.max"), 0)
+out[["population.initialization.relativebiomass.enabled"]] = FALSE
+out[["osmose.configuration.initialization"]] = inifile
+write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+out1 = .getPar(ben, "population.seeding.biomass")
+if(!seeding) out1 = t(as.data.frame(out1))*0
+write_osmose(as.matrix(out1), file=output, append=TRUE, col.names = FALSE, sep=" = ")
+
+if(seeding) message("You must run:\n\tinitialize_osmose(..., type='ncdf')\nto complete the setup.")
 
 # Advanced parameters -----------------------------------------------------
 
@@ -636,8 +651,6 @@ cat("\n# Simulation restart parameters", file=output, append = TRUE)
 out = list()
 out[["simulation.restart.recordfrequency.ndt"]] = 24
 out[["output.restart.spinup"]] = 3*.getPar(ben, "population.seeding.year.max")
-out[["population.initialization.file"]] = NULL
-out[["population.seeding.year.max"]] = .getPar(ben, "population.seeding.year.max")
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
 out = list()
@@ -654,10 +667,11 @@ write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" 
 out = list()
 out[["movement.randomseed.fixed"]] = FALSE
 out[["reproduction.randomseed.fixed"]] = FALSE
-out[["stochastic.mortality.seed "]] = 10
+out[["stochastic.mortality.seed"]] = 10
 
 write_osmose(as.matrix(out), file=output, append=TRUE, col.names = FALSE, sep=" = ")
 
+}
 
 cat("Update complete.")
 
