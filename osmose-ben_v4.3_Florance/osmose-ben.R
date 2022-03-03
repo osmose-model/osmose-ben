@@ -53,7 +53,7 @@ fisheries.name.fsh9 = fishery.deepwaterhake
 simulation.ncpu = 1
 simulation.nsimulation = 1
 simulation.time.ndtperyear = 24
-simulation.time.nyear = 150
+simulation.time.nyear = 10
 
 simulation.nschool.sp0 = 100
 simulation.nschool.sp1 = 24
@@ -287,19 +287,6 @@ mortality.starvation.rate.max.sp6 = 3
 mortality.starvation.rate.max.sp7 = 3
 mortality.starvation.rate.max.sp8 = 3
 mortality.starvation.rate.max.sp9 = 3
-
-population.seeding.biomass.sp0 = 3129213
-population.seeding.biomass.sp1 = 3888750
-population.seeding.biomass.sp2 = 3029155
-population.seeding.biomass.sp3 = 1286364
-population.seeding.biomass.sp4 = 1138339
-population.seeding.biomass.sp5 = 1439984
-population.seeding.biomass.sp6 = 198865
-population.seeding.biomass.sp7 = 81054
-population.seeding.biomass.sp8 = 575361
-population.seeding.biomass.sp9 = 591907
-
-population.seeding.year = 30
 
 # Predation configuration -------------------------------------------------
 
@@ -740,8 +727,8 @@ fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 
 # Output configuration ----------------------------------------------------
 
-output.start.year = 60
-output.restart.enabled = TRUE
+output.start.year = 0
+output.restart.enabled = FALSE
 output.file.prefix  = ben
 output.step0.include = FALSE
 output.recordfrequency.ndt = 2
@@ -955,6 +942,23 @@ output.distrib.bytl.min.sp9 = 0
 output.distrib.bytl.max.sp9 = 5
 output.distrib.bytl.incr.sp9 = 0.25
 
+# Model initialization ----------------------------------------------------
+
+population.seeding.year.max = 0
+population.initialization.relativebiomass.enabled = FALSE
+osmose.configuration.initialization = input/initial_conditions.osm
+
+population.seeding.biomass.sp0 = 0
+population.seeding.biomass.sp1 = 0
+population.seeding.biomass.sp2 = 0
+population.seeding.biomass.sp3 = 0
+population.seeding.biomass.sp4 = 0
+population.seeding.biomass.sp5 = 0
+population.seeding.biomass.sp6 = 0
+population.seeding.biomass.sp7 = 0
+population.seeding.biomass.sp8 = 0
+population.seeding.biomass.sp9 = 0
+
 # Advanced parameters -----------------------------------------------------
 
 osmose.version = 4.3.3
@@ -962,7 +966,6 @@ osmose.version = 4.3.3
 # Simulation restart parameters
 simulation.restart.recordfrequency.ndt = 24
 output.restart.spinup = 90
-population.seeding.year.max = 30
 
 ltl.java.classname = fr.ird.osmose.ltl.LTLFastForcing
 
@@ -973,4 +976,4 @@ simulation.incoming.flux.enabled = TRUE
 
 movement.randomseed.fixed = FALSE
 reproduction.randomseed.fixed = FALSE
-stochastic.mortality.seed  = 10
+stochastic.mortality.seed = 10
