@@ -5,19 +5,6 @@ library(ncdf4)
 library(nctools)
 library(kali)
 
-# manual inputs
-base     = "osmose-ben_v4.3_Florance"
-cfg      = "osmose-ben_v3.2_Florance/BEN_all-parameters-v3.2.csv"
-ltl_new  = "roms_climatological-%s_benguela_15days_2000_2009.nc" # regex
-model    = "ben"
-
-plk_start = 300
-plk_rename = c(Dinoflagellates="sphy", Diatoms="lphy", Ciliates="szoo", Copepods="lzoo")
-sp_reorder = c(sp0 = "euphausiids", sp1 = "anchovy", sp2 = "sardine", sp3 = "redeye",
-               sp4 = "horsemackerel", sp5 = "mesopelagic", sp6 = "silverkob",
-               sp7 = "snoek", sp8 = "shallowwaterhake", sp9 = "deepwaterhake")
-
-
 # Start of the updating code ----------------------------------------------
 
 for(seeding in c(TRUE, FALSE)) {
