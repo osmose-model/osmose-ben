@@ -42,9 +42,7 @@ vignettes/*.pdf
 *.jar
 
 # output files
-osmose-ben_v3.2_Florance/output/
-osmose-ben_v4.3_Florance/output/
-osmose-ben_v4_devel/output/
+*/output/
 
 # log files
 *.log
