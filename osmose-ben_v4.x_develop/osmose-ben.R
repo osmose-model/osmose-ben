@@ -725,6 +725,23 @@ fisheries.movement.variable.map9 = area
 fisheries.movement.nsteps.year.map9 = 24
 fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 
+# Survey configuration ----------------------------------------------------
+
+surveys.movement.netcdf.enabled = TRUE
+
+surveys.enabled.sr1 = TRUE
+surveys.name.sr1 = acousticSurvey
+surveys.selectivity.type.sr1 = 1
+surveys.selectivity.l50.sr1  = 4.5
+surveys.selectivity.l75.sr1  = 5
+surveys.selectivity.tiny.sr1 = 1e-3
+
+surveys.movement.survey.map1      = acousticSurvey
+surveys.movement.variable.map1    = area
+surveys.movement.nsteps.year.map1 = 24
+surveys.movement.file.map1        = input/fisheries/mapFleets.nc
+
+
 # Output configuration ----------------------------------------------------
 
 output.start.year = 0
@@ -734,6 +751,16 @@ output.step0.include = FALSE
 output.recordfrequency.ndt = 2
 output.cutoff.enabled = FALSE
 output.fishery.enabled = TRUE
+
+output.biomass.enabled = TRUE
+output.biomass.bysize.enabled = FALSE
+output.biomass.byage.enabled = FALSE
+output.biomass.bytl.enabled = FALSE
+
+output.biomass.netcdf.enabled = TRUE
+output.biomass.bysize.netcdf.enabled = TRUE
+output.biomass.byage.netcdf.enabled = FALSE
+output.biomass.bytl.netcdf.enabled = FALSE
 
 output.yield.biomass.enabled = TRUE
 output.yield.biomass.bySize.enabled = FALSE
@@ -748,16 +775,6 @@ output.yield.biomass.byage.netcdf.enabled = FALSE
 output.yield.abundance.netcdf.enabled = FALSE
 output.yield.abundance.bySize.netcdf.enabled = FALSE
 output.yield.abundance.byage.netcdf.enabled = FALSE
-
-output.biomass.enabled = TRUE
-output.biomass.bysize.enabled = FALSE
-output.biomass.byage.enabled = FALSE
-output.biomass.bytl.enabled = FALSE
-
-output.biomass.netcdf.enabled = FALSE
-output.biomass.bysize.netcdf.enabled = FALSE
-output.biomass.byage.netcdf.enabled = FALSE
-output.biomass.bytl.netcdf.enabled = FALSE
 
 output.abundance.enabled = FALSE
 output.abundance.age1.enabled = FALSE
@@ -945,7 +962,7 @@ output.distrib.bytl.incr.sp9 = 0.25
 # Model initialization ----------------------------------------------------
 
 population.seeding.year.max = 0
-population.initialization.relativebiomass.enabled = FALSE
+population.initialization.relativebiomass.enabled = TRUE
 osmose.configuration.initialization = input/initial_conditions.osm
 
 population.seeding.biomass.sp0 = 0
