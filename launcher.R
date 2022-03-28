@@ -1,5 +1,4 @@
 library(osmose)
-library(osmose.extras)
 library(stringr)
 library(r4ss.selectivity)
 library(mgcv)
@@ -7,7 +6,6 @@ library(nctools)
 
 javaPath   = "D:/sync/Github/osmose-private-populator/inst/java"
 configDir4  = "osmose-ben_v4.x_develop"
-jarFile   = file.path(configDir4, "osmose_4.3.3-jar-with-dependencies-np.jar")
 jarFile   = file.path(javaPath, "osmose_4.3.3-jar-with-dependencies.jar")
 outputDir = file.path(configDir4, "output") # main output directory
 
