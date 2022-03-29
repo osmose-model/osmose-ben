@@ -266,6 +266,17 @@ mortality.additional.rate.sp7 = 0.132
 mortality.additional.rate.sp8 = 0.228
 mortality.additional.rate.sp9 = 0.174
 
+# mortality.additional.rate.seasonality.sp0 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp1 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp2 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp3 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp4 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp5 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp6 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp7 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp8 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.rate.seasonality.sp9 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
 mortality.additional.larva.rate.sp0 = 5.004677
 mortality.additional.larva.rate.sp1 = 5.790887
 mortality.additional.larva.rate.sp2 = 2.719504
@@ -276,6 +287,17 @@ mortality.additional.larva.rate.sp6 = 6.674349
 mortality.additional.larva.rate.sp7 = 9.55594
 mortality.additional.larva.rate.sp8 = 3.068959
 mortality.additional.larva.rate.sp9 = 3.903988
+
+# mortality.additional.larva.rate.seasonality.sp0 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp1 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp2 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp3 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp4 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp5 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp6 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp7 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp8 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+# mortality.additional.larva.rate.seasonality.sp9 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 
 mortality.starvation.rate.max.sp0 = 3
 mortality.starvation.rate.max.sp1 = 3
@@ -729,6 +751,7 @@ fisheries.movement.file.map9 = input/fisheries/mapFleets.nc
 
 surveys.movement.netcdf.enabled = TRUE
 
+# Survey 1 (acousticSurvey)
 surveys.enabled.sr1 = TRUE
 surveys.name.sr1 = acousticSurvey
 surveys.selectivity.type.sr1 = 1
@@ -741,6 +764,18 @@ surveys.movement.variable.map1    = area
 surveys.movement.nsteps.year.map1 = 24
 surveys.movement.file.map1        = input/fisheries/mapFleets.nc
 
+# Survey 2 (SouthRegion)
+surveys.enabled.sr2 = TRUE
+surveys.name.sr2 = SouthRegion
+surveys.selectivity.type.sr2 = 0
+surveys.selectivity.l50.sr2  = 1
+surveys.selectivity.l75.sr2  = NULL
+surveys.selectivity.tiny.sr2 = 1e-3
+
+surveys.movement.survey.map2      = SouthRegion
+surveys.movement.variable.map2    = area
+surveys.movement.nsteps.year.map2 = 24
+surveys.movement.file.map2        = input/fisheries/mapFleets.nc
 
 # Output configuration ----------------------------------------------------
 
@@ -753,18 +788,18 @@ output.cutoff.enabled = FALSE
 output.fishery.enabled = TRUE
 
 output.biomass.enabled = TRUE
-output.biomass.bysize.enabled = FALSE
-output.biomass.byage.enabled = FALSE
-output.biomass.bytl.enabled = FALSE
+output.biomass.bysize.enabled = TRUE
+output.biomass.byage.enabled = TRUE
+output.biomass.bytl.enabled = TRUE
 
-output.biomass.netcdf.enabled = TRUE
-output.biomass.bysize.netcdf.enabled = TRUE
+output.biomass.netcdf.enabled = FALSE
+output.biomass.bysize.netcdf.enabled = FALSE
 output.biomass.byage.netcdf.enabled = FALSE
 output.biomass.bytl.netcdf.enabled = FALSE
 
 output.yield.biomass.enabled = TRUE
-output.yield.biomass.bySize.enabled = FALSE
-output.yield.biomass.byAge.enabled = FALSE
+output.yield.biomass.bySize.enabled = TRUE
+output.yield.biomass.byAge.enabled = TRUE
 output.yield.abundance.enabled = FALSE
 output.yield.abundance.bySize.enabled = FALSE
 output.yield.abundance.byAge.enabled = FALSE
@@ -776,11 +811,11 @@ output.yield.abundance.netcdf.enabled = FALSE
 output.yield.abundance.bySize.netcdf.enabled = FALSE
 output.yield.abundance.byage.netcdf.enabled = FALSE
 
-output.abundance.enabled = FALSE
+output.abundance.enabled = TRUE
 output.abundance.age1.enabled = FALSE
-output.abundance.bysize.enabled = FALSE
-output.abundance.byage.enabled = FALSE
-output.abundance.bytl.enabled = FALSE
+output.abundance.bysize.enabled = TRUE
+output.abundance.byage.enabled = TRUE
+output.abundance.bytl.enabled = TRUE
 
 output.abundance.netcdf.enabled = FALSE
 output.abundance.bysize.netcdf.enabled = FALSE
@@ -813,14 +848,14 @@ output.mortality.additionalN.bySize.enabled = FALSE
 output.mortality.additionalN.byAge.enabled = FALSE
 output.mortality.perSpecies.byage.netcdf.enabled = FALSE
 
-output.size.enabled = FALSE
-output.size.catch.enabled = FALSE
-output.tl.enabled = FALSE
-output.tl.catch.enabled = FALSE
-output.meanTL.bySize.enabled = FALSE
-output.meanTL.byAge.enabled = FALSE
-output.weight.enabled = FALSE
-output.meanSize.byAge.enabled = FALSE
+output.size.enabled = TRUE
+output.size.catch.enabled = TRUE
+output.tl.enabled = TRUE
+output.tl.catch.enabled = TRUE
+output.meanTL.bySize.enabled = TRUE
+output.meanTL.byAge.enabled = TRUE
+output.weight.enabled = TRUE
+output.meanSize.byAge.enabled = TRUE
 
 output.diet.composition.enabled = FALSE
 output.diet.composition.byage.enabled = FALSE
@@ -839,6 +874,10 @@ output.spatialMstarv.enabled = FALSE
 output.spatialMpred.enabled = FALSE
 
 # Output distribution configuration
+output.distrib.bysize.min  = 0
+output.distrib.bysize.max  = 200
+output.distrib.bysize.incr = 0.25
+
 output.distrib.bysize.min.sp0 = 0
 output.distrib.bysize.max.sp0 = 3
 output.distrib.bysize.incr.sp0 = 0.05
