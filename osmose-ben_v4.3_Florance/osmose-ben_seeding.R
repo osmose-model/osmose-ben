@@ -4,6 +4,8 @@
 
 # Setting the model -------------------------------------------------------
 
+output.netcdf.format = netcdf3
+
 simulation.nresource = 4
 simulation.nspecies = 10
 simulation.nfisheries = 9
