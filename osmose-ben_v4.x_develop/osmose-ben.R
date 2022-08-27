@@ -4,10 +4,11 @@
 
 # Setting the model -------------------------------------------------------
 
-simulation.nresource = 4
-simulation.nspecies = 10
+simulation.nresource  = 4
+simulation.nspecies   = 10
 simulation.nfisheries = 9
-fisheries.enabled = TRUE
+
+fisheries.enabled       = TRUE
 fisheries.check.enabled = FALSE
 
 species.name.sp0 = euphausiids
@@ -288,16 +289,16 @@ mortality.additional.larva.rate.sp7 = 9.55594
 mortality.additional.larva.rate.sp8 = 3.068959
 mortality.additional.larva.rate.sp9 = 3.903988
 
-# mortality.additional.larva.rate.seasonality.sp0 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp1 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp2 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp3 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp4 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp5 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp6 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp7 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp8 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-# mortality.additional.larva.rate.seasonality.sp9 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp0 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp1 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp2 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp3 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp4 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp5 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp6 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp7 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp8 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+mortality.additional.larva.rate.seasonality.sp9 = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 
 mortality.starvation.rate.max.sp0 = 3
 mortality.starvation.rate.max.sp1 = 3
@@ -764,7 +765,7 @@ surveys.movement.variable.map1    = area
 surveys.movement.nsteps.year.map1 = 24
 surveys.movement.file.map1        = input/fisheries/mapFleets.nc
 
-# Survey 2 (SouthRegion)
+# Survey 2 (SouthRegion - catch by region)
 surveys.enabled.sr2 = TRUE
 surveys.name.sr2 = SouthRegion
 surveys.selectivity.type.sr2 = 0
@@ -774,7 +775,7 @@ surveys.selectivity.tiny.sr2 = 1e-3
 
 surveys.movement.survey.map2      = SouthRegion
 surveys.movement.variable.map2    = area
-surveys.movement.nsteps.year.map2 = 24
+surveys.movement.nsteps.year.map2 = 1
 surveys.movement.file.map2        = input/fisheries/mapFleets.nc
 
 # Output configuration ----------------------------------------------------
@@ -786,11 +787,17 @@ output.step0.include = FALSE
 output.recordfrequency.ndt = 2
 output.cutoff.enabled = FALSE
 output.fishery.enabled = TRUE
+output.fishing.accessible.biomass = FALSE
+output.fishing.harvested.biomass  = FALSE
+output.netcdf.format = netcdf3
+output.flush.enabled = FALSE
+
 
 output.biomass.enabled = TRUE
 output.biomass.bysize.enabled = TRUE
 output.biomass.byage.enabled = TRUE
 output.biomass.bytl.enabled = TRUE
+output.biomass.byweight.enabled = FALSE
 
 output.biomass.netcdf.enabled = FALSE
 output.biomass.bysize.netcdf.enabled = FALSE
@@ -800,9 +807,11 @@ output.biomass.bytl.netcdf.enabled = FALSE
 output.yield.biomass.enabled = TRUE
 output.yield.biomass.bySize.enabled = TRUE
 output.yield.biomass.byAge.enabled = TRUE
+output.yield.biomass.byWeight.enabled   = FALSE
 output.yield.abundance.enabled = FALSE
 output.yield.abundance.bySize.enabled = FALSE
 output.yield.abundance.byAge.enabled = FALSE
+output.yield.abundance.byWeight.enabled = FALSE
 
 output.yield.biomass.netcdf.enabled = FALSE
 output.yield.biomass.bySize.netcdf.enabled = FALSE
@@ -816,6 +825,7 @@ output.abundance.age1.enabled = FALSE
 output.abundance.bysize.enabled = TRUE
 output.abundance.byage.enabled = TRUE
 output.abundance.bytl.enabled = TRUE
+output.abundance.byweight.enabled = FALSE
 
 output.abundance.netcdf.enabled = FALSE
 output.abundance.bysize.netcdf.enabled = FALSE
@@ -848,14 +858,20 @@ output.mortality.additionalN.bySize.enabled = FALSE
 output.mortality.additionalN.byAge.enabled = FALSE
 output.mortality.perSpecies.byage.netcdf.enabled = FALSE
 
-output.size.enabled = TRUE
-output.size.catch.enabled = TRUE
-output.tl.enabled = TRUE
-output.tl.catch.enabled = TRUE
+output.size.enabled = FALSE
+output.size.catch.enabled = FALSE
+output.tl.enabled = FALSE
+output.tl.catch.enabled = FALSE
+output.weight.enabled = FALSE
+output.age.at.death.enabled = FALSE
+
 output.meanTL.bySize.enabled = TRUE
 output.meanTL.byAge.enabled = TRUE
 output.weight.enabled = TRUE
 output.meanSize.byAge.enabled = TRUE
+output.meanWeight.byAge.enabled = FALSE
+output.meanWeight.bySize.enabled = FALSE
+output.meanWeight.byWeight.enabled = FALSE
 
 output.diet.composition.enabled = FALSE
 output.diet.composition.byage.enabled = FALSE
@@ -1029,6 +1045,7 @@ ltl.java.classname = fr.ird.osmose.ltl.LTLFastForcing
 simulation.bioen.enabled = FALSE
 simulation.genetic.enabled = FALSE
 simulation.incoming.flux.enabled = TRUE
+economy.enabled = FALSE
 
 movement.randomseed.fixed = FALSE
 reproduction.randomseed.fixed = FALSE
