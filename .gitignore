@@ -39,16 +39,27 @@ vignettes/*.pdf
 .Renviron
 
 # jar files
-*.jar
 
 # output files
 */output/
 
 # log files
 *.log
+*.zip
+*.tar
 
 # sandbox
 sandbox/
-data/
 
 TODO.txt
+fix*.*
+
+# osmose executables
+
+*osmose_*.jar
+
+# OSMOSE temporal folders
+.run*
+
+# OSMOSE outputs
+calibration/master/output
